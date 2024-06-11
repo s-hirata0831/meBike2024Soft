@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vmo-vh-TFd">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -8,39 +8,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--自転車に乗る-->
         <scene sceneID="Un9-A9-mRp">
             <objects>
-                <viewController id="6ZI-F8-lfM" sceneMemberID="viewController">
+                <viewController id="6ZI-F8-lfM" customClass="webViewController" customModule="ME_Bike" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xsP-Mx-Rto">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01v-Xf-2lS">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="760"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cZV-iO-QwJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="dmV-Vl-nL6"/>
+                    <tabBarItem key="tabBarItem" title="自転車に乗る" image="bicycle" catalog="system" id="dmV-Vl-nL6"/>
+                    <connections>
+                        <outlet property="webView" destination="01v-Xf-2lS" id="x8R-N6-wx5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLA-pK-0KG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="-40"/>
+            <point key="canvasLocation" x="93.89312977099236" y="-40.140845070422536"/>
         </scene>
-        <!--Item 1-->
+        <!--自転車置き場に行く-->
         <scene sceneID="iW3-Jj-UTm">
             <objects>
-                <viewController id="GzB-XP-bHu" sceneMemberID="viewController">
+                <viewController id="GzB-XP-bHu" customClass="ViewController" customModule="ME_Bike" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F39-Fz-mYA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-Vn-3n8">
-                                <rect key="frame" x="-5" y="0.0" width="402" height="769"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="-5" y="0.0" width="402" height="761"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </arscnView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ujv-rm-5Xg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="cD4-XW-M7T"/>
+                    <tabBarItem key="tabBarItem" title="自転車置き場に行く" image="figure.walk" catalog="system" id="cD4-XW-M7T"/>
+                    <connections>
+                        <outlet property="sceneView" destination="KFg-Vn-3n8" id="gfh-xq-tIo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWe-mp-JX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,6 +83,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bicycle" catalog="system" width="128" height="78"/>
+        <image name="figure.walk" catalog="system" width="95" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
