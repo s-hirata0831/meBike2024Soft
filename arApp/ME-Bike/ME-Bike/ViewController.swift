@@ -59,7 +59,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         // 距離を計算
         let distance = location.distance(from: CLLocation(latitude: targetLocation.latitude, longitude: targetLocation.longitude))
-        distanceLabel.text = String(format: "%.2f meters", distance)
+        
+        // UILabelがnilでないか確認
+        if let distanceLabel = distanceLabel {
+            distanceLabel.text = String(format: "%.2f meters", distance)
+        } else {
+            print("distanceLabel is nil")
+        }
         
         // 方角を計算
         let direction = getDirection(from: currentLocation, to: targetLocation)
@@ -162,19 +168,63 @@ class webViewController: UIViewController, WKNavigationDelegate{
     }
 }
 
-class mapViewController: UIViewController, WKNavigationDelegate{
-    @IBOutlet weak var mapView: MKMapView!
+class MapViewController: UIViewController,CLLocationManagerDelegate {
+    @IBOutlet weak var map: MKMapView!
     
-    override func viewDidLoad(){
+    var locationManager: CLLocationManager!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        setupMapView()
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager!.requestWhenInUseAuthorization()
+        
+        initMap()
     }
+    // 許可を求めるためのdelegateメソッド
+    func locationManager(_ manager: CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            // 許可されてない場合
+            case .notDetermined:
+            // 許可を求める
+                manager.requestWhenInUseAuthorization()
+            // 拒否されてる場合
+            case .restricted, .denied:
+                // 何もしない
+                break
+            // 許可されている場合
+            case .authorizedAlways, .authorizedWhenInUse:
+                // 現在地の取得を開始
+                manager.startUpdatingLocation()
+                break
+            default:
+                break
+            }
+        }
     
-    func setupMapView(){
-        // マップの初期表示位置を設定する例
-        let initialLocation = CLLocation(latitude: 35.468716,longitude: 135.395109)
-        let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegion(center: initialLocation.coordinate,latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
+    func initMap(){
+        var region:MKCoordinateRegion = map.region
+        region.span.latitudeDelta = 0.02
+        region.span.longitudeDelta = 0.02
+        map.setRegion(region,animated:true)
+        
+        // 現在位置表示の有効化
+        map.showsUserLocation = true
+        // 現在位置設定(デバイスの動きとしてこの時の一回だけ中心位置が現在位置で更新される)
+        map.userTrackingMode = .follow
+       
+       // 指定の座標にピンを立てる
+       addPinAtCoordinate(latitude: 35.468709, longitude: 135.395093, title: "ME-Bikeステーション", subtitle: "東舞鶴駅")
+       addPinAtCoordinate(latitude: 35.495514, longitude: 135.439459, title: "ME-Bikeステーション", subtitle: "舞鶴高専")
     }
+   
+   //ピンを立てる関数
+   func addPinAtCoordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees, title: String, subtitle: String) {
+       let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+       let annotation = MKPointAnnotation()
+       annotation.coordinate = coordinate
+       annotation.title = title
+       annotation.subtitle = subtitle
+       map.addAnnotation(annotation)
+   }
 }

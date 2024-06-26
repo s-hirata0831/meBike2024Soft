@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vmo-vh-TFd">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
@@ -86,15 +86,22 @@
         <!--自転車置き場へ行く-->
         <scene sceneID="pSr-Nz-fpf">
             <objects>
-                <viewController id="l22-El-Yij" customClass="mapViewController" customModule="ME_Bike" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l22-El-Yij" customClass="MapViewController" customModule="ME_Bike" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AKP-1l-Xzf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nn-Fn-VPe">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="761"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="経路案内" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hR-xF-Rhj">
+                                <rect key="frame" x="16" y="36" width="293" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsUserLocation="YES" showsScale="YES" showsUserTrackingButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nn-Fn-VPe">
+                                <rect key="frame" x="0.0" y="114" width="393" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <standardMapConfiguration key="preferredConfiguration" showsTraffic="YES"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ir-MK-pEW"/>
@@ -102,7 +109,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="自転車置き場へ行く" image="figure.walk" catalog="system" id="vZT-DC-DSo"/>
                     <connections>
-                        <outlet property="mapView" destination="4nn-Fn-VPe" id="9c4-Ay-TZA"/>
+                        <outlet property="map" destination="4nn-Fn-VPe" id="O4R-fP-Sic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJI-4X-Qtl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
