@@ -67,11 +67,11 @@
 				8B8D9ACB2C059299005FF203 /* AppDelegate.swift */,
 				8B8D9ACD2C059299005FF203 /* SceneDelegate.swift */,
 				8B8D9ACF2C059299005FF203 /* ViewController.swift */,
+				8B8D9AE22C059785005FF203 /* art.scnassets */,
 				8B8D9AD12C059299005FF203 /* Main.storyboard */,
 				8B8D9AD42C05929A005FF203 /* Assets.xcassets */,
 				8B8D9AD62C05929A005FF203 /* LaunchScreen.storyboard */,
 				8B8D9AD92C05929A005FF203 /* Info.plist */,
-				8B8D9AE22C059785005FF203 /* art.scnassets */,
 				8B8D9AE42C05AE79005FF203 /* Image.xcassets */,
 			);
 			path = "ME-Bike";
