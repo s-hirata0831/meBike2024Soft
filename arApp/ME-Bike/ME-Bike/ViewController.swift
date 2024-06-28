@@ -168,7 +168,7 @@ class webViewController: UIViewController, WKNavigationDelegate{
     }
 }
 
-class MapViewController: UIViewController,CLLocationManagerDelegate {
+class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     @IBOutlet weak var map: MKMapView!
     
     var locationManager: CLLocationManager!
@@ -179,6 +179,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager!.requestWhenInUseAuthorization()
         
+        map.delegate = self
         initMap()
     }
     // 許可を求めるためのdelegateメソッド
@@ -227,4 +228,72 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
        annotation.subtitle = subtitle
        map.addAnnotation(annotation)
    }
+   
+   // MKMapViewDelegate method for custom annotation view
+   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+       if annotation is MKUserLocation {
+           return nil
+       }
+       
+       let identifier = "pin"
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+       
+       if annotationView == nil {
+          annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+           annotationView?.canShowCallout = true
+       } else {
+           annotationView?.annotation = annotation
+       }
+       
+       return annotationView
+   }
+   
+   // MKMapViewDelegate method for annotation selection
+   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+       if let subtitle = view.annotation?.subtitle, subtitle == "舞鶴高専" {
+           presentHalfModal()
+       }
+   }
+   
+   func presentHalfModal() {
+       let halfModalVC = HalfModalViewController()
+       halfModalVC.modalPresentationStyle = .pageSheet
+       if let sheet = halfModalVC.sheetPresentationController {
+           sheet.detents = [.medium(), .large()]
+       }
+       present(halfModalVC, animated: true, completion: nil)
+   }
+}
+
+//舞鶴高専スポットのハーフモーダル
+class HalfModalViewController: UIViewController {
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      view.backgroundColor = .black
+        
+      // Add content to the modal
+      let label = UILabel()
+      label.text = "ME-Bikeステーション"
+      label.textAlignment = .left
+      label.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(label)
+       
+      NSLayoutConstraint.activate([
+           label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+           label.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
+      ])
+       
+      //舞鶴高専ステーション
+      let titleL = UILabel()
+      titleL.text = "舞鶴高専スポット"
+      titleL.textAlignment = .left
+      titleL.font = UIFont.boldSystemFont(ofSize: 30)
+      titleL.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(titleL)
+        
+       NSLayoutConstraint.activate([
+           titleL.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+           titleL.topAnchor.constraint(equalTo: view.topAnchor, constant: 42)
+       ])
+    }
 }
