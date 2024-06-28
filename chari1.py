@@ -3,10 +3,6 @@ import nfc
 import RPi.GPIO as GPIO
 import binascii
 import time
-from threading import Thread, Timer
-from evdev import InputDevice
-from select import select
-from keymap import keys
 import requests
 import json
 import asyncio
@@ -30,10 +26,6 @@ target_req_felica = nfc.clf.RemoteTarget("212F")
 
 # 106A(NFC type A)で設定   
 target_req_nfc = nfc.clf.RemoteTarget("106A")
-
-#入力するキーボードの設定(キーボードを変更するたびに変更)
-DEVICE = "/dev/input/by-id/usb-SEM_USB_Keyboard-event-kbd"
-dev = InputDevice(DEVICE)
 
 #ソレノイドロックをつなぐピンのGPIOをOUTMODEに
 GPIO.setmode(GPIO.BCM)

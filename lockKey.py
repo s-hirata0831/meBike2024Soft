@@ -4,7 +4,6 @@ import time
 import nfc
 import binascii
 import time
-from threading import Thread, Timer
 
  # 待ち受けの1サイクル秒
 TIME_cycle = 10.0
