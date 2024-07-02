@@ -38,12 +38,14 @@ def check_FeliCa():
         if idm.decode() ==  Register_IDm:
             print('登録済み')
         else :
+            print("警報作動")
             playsound("error.mp3")
 
         #sleepなしでは次の読み込みが始まって終了する
         print ('sleep ' + str(TIME_wait) + ' seconds')
         time.sleep(TIME_wait)
     else :
+        print("警報作動")
         playsound("error.mp3")
 
     clf.close()
