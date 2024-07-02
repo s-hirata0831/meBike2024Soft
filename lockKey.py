@@ -2,7 +2,7 @@
 import time
 import nfc
 import binascii
-from playsound import playsound
+import pygame.mixer
 
 #登録済みタグ のIDm
 Register_IDm = "012e48c23c8a414b"
@@ -39,14 +39,19 @@ def check_FeliCa():
             print('登録済み')
         else :
             print("警報作動")
-            playsound("error.mp3")
+            pygame.mixer.init()
+            pygame.mixer.music.load("error.mp3")
+            pygame.mixer.music.Sound(1)
 
         #sleepなしでは次の読み込みが始まって終了する
         print ('sleep ' + str(TIME_wait) + ' seconds')
         time.sleep(TIME_wait)
     else :
         print("警報作動")
-        playsound("error.mp3")
+        pygame.mixer.init()
+        pygame.mixer.music.load("error.mp3")
+        pygame.mixer.music.Sound(1)
+        time.sleep(TIME_wait)
 
     clf.close()
 
