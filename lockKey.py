@@ -21,6 +21,24 @@ target_req_felica = nfc.clf.RemoteTarget("212F")
 # 106A(NFC type A)で設定
 target_req_nfc = nfc.clf.RemoteTarget("106A")
 
+#ブザーをつなぐピンのGPIO(BCM番号)
+Buzzer = 23
+
+#ブザーをつなぐピンのGPIOをOUTMODEに
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(Buzzer, GPIO.OUT)
+
+def Alarm():
+    #BuzzerのピンをON
+    GPIO.output(Buzzer, True)
+    print ("警報ON")
+    time.sleep(5.0)         #5秒間維持
+    #BuzzerのピンをOFF
+    GPIO.output(Buzzer, False)
+    print ("警報OFF")
+    time.sleep(1.0)         #1秒間維持
+    GPIO.cleanup
+
 def check_FeliCa():
     print  ('FeliCa waiting...')
     # USBに接続されたNFCリーダに接続してインスタンス化
@@ -37,6 +55,7 @@ def check_FeliCa():
         #特定のIDmだった場合
         if idm.decode() ==  Register_IDm:
             print('登録済み')
+            Alarm()
 
         #sleepなしでは次の読み込みが始まって終了する
         print ('sleep ' + str(TIME_wait) + ' seconds')
