@@ -1,8 +1,8 @@
 # coding: utf-8
-import RPi.GPIO as GPIO
 import time
 import nfc
 import binascii
+from playsound import playsound
 
 #登録済みタグ のIDm
 Register_IDm = "012e48c23c8a414b"
@@ -21,24 +21,6 @@ target_req_felica = nfc.clf.RemoteTarget("212F")
 # 106A(NFC type A)で設定
 target_req_nfc = nfc.clf.RemoteTarget("106A")
 
-#ブザーをつなぐピンのGPIO(BCM番号)
-Buzzer = 23
-
-#ブザーをつなぐピンのGPIOをOUTMODEに
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(Buzzer, GPIO.OUT)
-
-def Alarm():
-    #BuzzerのピンをON
-    GPIO.output(Buzzer, True)
-    print ("警報ON")
-    time.sleep(5.0)         #5秒間維持
-    #BuzzerのピンをOFF
-    GPIO.output(Buzzer, False)
-    print ("警報OFF")
-    time.sleep(1.0)         #1秒間維持
-    GPIO.cleanup
-
 def check_FeliCa():
     print  ('FeliCa waiting...')
     # USBに接続されたNFCリーダに接続してインスタンス化
@@ -55,12 +37,16 @@ def check_FeliCa():
         #特定のIDmだった場合
         if idm.decode() ==  Register_IDm:
             print('登録済み')
-            Alarm()
+        else :
+            playsound("error.mp3")
 
         #sleepなしでは次の読み込みが始まって終了する
         print ('sleep ' + str(TIME_wait) + ' seconds')
         time.sleep(TIME_wait)
+    else :
+        playsound("error.mp3")
 
     clf.close()
-    
-check_FeliCa()
+
+while (True):    
+    check_FeliCa()
