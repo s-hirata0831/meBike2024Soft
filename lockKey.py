@@ -2,7 +2,7 @@
 import time
 import nfc
 import binascii
-import pygame.mixer
+from pygame import mixer
 
 #登録済みタグ のIDm
 Register_IDm = "012e48c23c8a414b"
@@ -20,6 +20,14 @@ target_req_felica = nfc.clf.RemoteTarget("212F")
 
 # 106A(NFC type A)で設定
 target_req_nfc = nfc.clf.RemoteTarget("106A")
+
+def music_play():
+    mixer.init()
+    mixer.music.load("error.mp3")
+    time.sleep(1)
+    mixer.music.play(loops=1)
+    while mixer.music.get_busy():
+        time.sleep(0.1)
 
 def check_FeliCa():
     print  ('FeliCa waiting...')
@@ -39,19 +47,14 @@ def check_FeliCa():
             print('登録済み')
         else :
             print("警報作動")
-            pygame.mixer.init()
-            pygame.mixer.music.load("error.mp3")
-            pygame.mixer.music.Sound(1)
+            music_play()
 
         #sleepなしでは次の読み込みが始まって終了する
         print ('sleep ' + str(TIME_wait) + ' seconds')
         time.sleep(TIME_wait)
     else :
         print("警報作動")
-        pygame.mixer.init()
-        pygame.mixer.music.load("error.mp3")
-        pygame.mixer.music.Sound(1)
-        time.sleep(TIME_wait)
+        music_play()
 
     clf.close()
 
