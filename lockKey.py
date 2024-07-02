@@ -3,7 +3,9 @@ import RPi.GPIO as GPIO
 import time
 import nfc
 import binascii
-import time
+
+#登録済みタグ のIDm
+Register_IDm = "012e48c23c8a414b"
 
  # 待ち受けの1サイクル秒
 TIME_cycle = 10.0
@@ -33,7 +35,7 @@ def check_FeliCa():
         print ('FeliCa detected. idm = ' + idm.decode())
 	
         #特定のIDmだった場合
-        if idm.decode() == "012e48c23c8a414b":
+        if idm.decode() ==  Register_IDm:
             print('登録済み')
 
         #sleepなしでは次の読み込みが始まって終了する
