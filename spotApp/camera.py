@@ -11,7 +11,7 @@ def main():
         exit()
     
     # モデルを読み込む
-    weights = os.path.join(directory, "yunet.onnx")
+    weights = os.path.join(directory, "./yunet.onnx")
     face_detector = cv2.FaceDetectorYN_create(weights, "", (320, 240))  # 初期サイズを設定
 
     while True:
