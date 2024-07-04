@@ -12,7 +12,7 @@ def main():
     
     # モデルを読み込む
     weights = os.path.join(directory, "yunet.onnx")
-    face_detector = cv2.FaceDetectorYN_create(weights, "", (0, 0))
+    face_detector = cv2.FaceDetectorYN_create(weights, "", (320, 240))  # 初期サイズを設定
 
     while True:
         # フレームをキャプチャして画像を読み込む
@@ -32,8 +32,11 @@ def main():
         height, width, _ = image.shape
         face_detector.setInputSize((width, height))
 
+        # 画像をリサイズして検出
+        resized_image = cv2.resize(image, (width, height))
+
         # 顔を検出する
-        _, faces = face_detector.detect(image)
+        _, faces = face_detector.detect(resized_image)
         faces = faces if faces is not None else []
 
         # 検出した顔のバウンディングボックスとランドマークを描画する
