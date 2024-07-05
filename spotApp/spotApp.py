@@ -11,6 +11,8 @@ def main(page: ft.Page):
     page.window_top = 0  # 位置(TOP)
     page.window_left = 0  # 位置(LEFT)
     page.window_always_on_top = True
+    page.window_skip_task_bar = True
+    
 
     page.update()
 
