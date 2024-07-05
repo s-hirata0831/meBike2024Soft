@@ -1,76 +1,46 @@
-import os
-import numpy as np
+# -*- coding: utf-8 -*-
 import cv2
 
 def main():
-    # キャプチャを開く
-    directory = os.path.dirname(__file__)
-    #capture = cv2.VideoCapture(os.path.join(directory, "image.jpg")) # 画像ファイル
-    capture = cv2.VideoCapture(0) # カメラ
-    if not capture.isOpened():
-        exit()
-    
-    # モデルを読み込む
-    weights = os.path.join(directory, "./yunet.onnx")
-    face_detector = cv2.FaceDetectorYN_create(weights, "", (320, 240))  # 初期サイズを設定
+    # ウェブカメラを起動
+    cap = cv2.VideoCapture(0)
 
-    while True:
-        # フレームをキャプチャして画像を読み込む
-        result, image = capture.read()
-        if result is False:
-            cv2.waitKey(0)
-            break
+    if not cap.isOpened():
+        print("Error: Could not open video device.")
+        return
 
-        # 画像が3チャンネル以外の場合は3チャンネルに変換する
-        channels = 1 if len(image.shape) == 2 else image.shape[2]
-        if channels == 1:
-            image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-        if channels == 4:
-            image = cv2.cvtColor(image, cv2.COLOR_BGRA2BGR)
+    # 初期化のために複数フレームを読み込む
+    for i in range(10):
+        ret, img = cap.read()
 
-        # 入力サイズを指定する
-        height, width, _ = image.shape
-        face_detector.setInputSize((width, height))
+    # ウェブカメラを解放
+    cap.release()
 
-        # 画像をリサイズして検出
-        resized_image = cv2.resize(image, (width, height))
+    if not ret:
+        print("Error: Could not read frame.")
+        return
 
-        # 顔を検出する
-        _, faces = face_detector.detect(resized_image)
-        faces = faces if faces is not None else []
+    # カスケード型識別器の読み込み
+    cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-        # 検出した顔のバウンディングボックスとランドマークを描画する
-        for face in faces:
-            # バウンディングボックス
-            box = list(map(int, face[:4]))
-            color = (0, 0, 255)
-            thickness = 2
-            cv2.rectangle(image, box, color, thickness, cv2.LINE_AA)
+    if cascade.empty():
+        print("Error: Could not load cascade classifier.")
+        return
 
-            # ランドマーク（右目、左目、鼻、右口角、左口角）
-            landmarks = list(map(int, face[4:len(face)-1]))
-            landmarks = np.array_split(landmarks, len(landmarks) / 2)
-            for landmark in landmarks:
-                radius = 5
-                thickness = -1
-                cv2.circle(image, landmark, radius, color, thickness, cv2.LINE_AA)
-                
-            # 信頼度
-            confidence = face[-1]
-            confidence = "{:.2f}".format(confidence)
-            position = (box[0], box[1] - 10)
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            scale = 0.5
-            thickness = 2
-            cv2.putText(image, confidence, position, font, scale, color, thickness, cv2.LINE_AA)
+    # グレースケール変換
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        # 画像を表示する
-        cv2.imshow("face detection", image)
-        key = cv2.waitKey(10)
-        if key == ord('q'):
-            break
-    
-    cv2.destroyAllWindows()
+    # 顔領域の探索
+    faces = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3, minSize=(30, 30))
+
+    # 顔領域を赤色の矩形で囲む
+    for (x, y, w, h) in faces:
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 4)
+
+    # 結果を出力
+    output_path = "spotApp/result.jpg"
+    cv2.imwrite(output_path, img)
+    print(f"Result saved as '{output_path}'")
 
 if __name__ == '__main__':
     main()
