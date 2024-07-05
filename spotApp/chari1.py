@@ -1,14 +1,17 @@
 # coding: utf-8
 import nfc
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import binascii
 import time
 import requests
 import json
 import asyncio
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 #登録済みタグ のIDm
-Register_IDm = "012e48c23c8a414b"
+Register_IDm = os.environ.get('REGISTER_IDM')
 
 # 待ち受けの1サイクル秒(FeliCa)
 TIME_cycle = 10.0
@@ -28,17 +31,28 @@ target_req_felica = nfc.clf.RemoteTarget("212F")
 target_req_nfc = nfc.clf.RemoteTarget("106A")
 
 #ソレノイドロックをつなぐピンのGPIOをOUTMODEに
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(Solenoid, GPIO.OUT)
+#GPIO.setmode(GPIO.BCM)
+#GPIO.setup(Solenoid, GPIO.OUT)
+
+#APIキー
+api_key = os.environ.get('API_KEY')
+
+#プロジェクトID
+project_id = os.environ.get('PROJECT_ID')
+
+#Firestoreコレクションのパス
+collection_path = ''
+
+
 
 #サーバのURL
-url = "http://example.com/"
+url = "https://firestore.googleapis.com/v1/projects/{project_id}/databases/(default)/documents/{collection_path}?key={api_key}"
 
 #ソレノイドロック動作
 def solenoid_control():
     #ソレノイドの状態(ON)を送信
-    data = ["id": "1", "key": "true"]
-    p = request.post(url, data)
+    data = {"id": "1" , "key": "true"}
+    p = requests.post(url, data)
     print(p.text)
     #SolenoidのピンをON
     GPIO.output(Solenoid, True)
@@ -49,8 +63,8 @@ def solenoid_control():
     print ("施錠")
     time.sleep(1.0)         #1秒間維持
     #ソレノイドの状態(OFF)を送信
-    data = ["id": "1", "key": "false"]
-    p = request.post(url, data)
+    data = {"id": "1", "key": "false"}
+    p = requests.post(url, data)
     print(p.text)
     GPIO.cleanup
 
@@ -72,7 +86,7 @@ async def check_FeliCa():
             print('登録済み')
             
         #ソレノイドの状態を受信
-        r1 = request.get(url)
+        r1 = requests.get(url)
         data1 = json.loads(r1.text)
         print(data1["Solenoid"])
             
@@ -91,7 +105,7 @@ async def check_FeliCa():
     
 async def server_receive():
     #サーバからの受信
-    r2 = request.get(url)
+    r2 = requests.get(url)
     data2 = json.loads(r2.text)
     print(data2["Server"])
     
