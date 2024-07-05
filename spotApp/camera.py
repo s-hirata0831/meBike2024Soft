@@ -38,7 +38,7 @@ def main():
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 4)
 
     # 結果を出力
-    output_path = "spotApp/result.jpg"
+    output_path = "result.jpg"
     cv2.imwrite(output_path, img)
     print(f"Result saved as '{output_path}'")
 
