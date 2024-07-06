@@ -11,10 +11,18 @@ def main(page: ft.Page):
     page.window_top = 0  # 位置(TOP)
     page.window_left = 0  # 位置(LEFT)
     page.window_always_on_top = True
-    page.window_skip_task_bar = True
-    
+    page.window_skip_task_bar = False #本番環境ではTrueにする
+
+    text = ft.Text(
+        "ME-Bike GUIへようこそ！",
+        size=50,
+        weight=ft.FontWeight.W_900,
+        color=ft.colors.BLACK,
+        selectable=False
+    )   
 
     page.update()
+    page.add(text)
 
 
 ft.app(target=main)
