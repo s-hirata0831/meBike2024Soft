@@ -44,7 +44,7 @@ def main(page: ft.Page):
                         ft.Row([
                             ft.Text(
                                 "ME-Bike 舞鶴高専ステーション",
-                                size=80,
+                                size=120,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
