@@ -87,7 +87,7 @@ def main(page: ft.Page):
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             )
-                        ],spacing=40,alignment=ft.MainAxisAlignment.CENTER),
+                        ],alignment=ft.MainAxisAlignment.CENTER, vertical_alignment=ft.CrossAxisAlignment.END),
                     ],),
                     margin=10,
                     padding=10,
