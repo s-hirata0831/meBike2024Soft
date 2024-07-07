@@ -9,17 +9,20 @@ def main(page: ft.Page):
     page.window_maximizable = False
     page.window_resizable = False
     page.window_full_screen = True
-    page.window_top = 1000  # 位置(TOP)
-    page.window_left = 10000  # 位置(LEFT)
     page.window_always_on_top = True
-    page.window_skip_task_bar = False #本番環境ではTrueにする
+    page.window_skip_task_bar = False
+
+    page.fonts={
+        "BIZ UDPGothic": "https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+    }
 
     text = ft.Text(
-        "Welcome to ME-Bike GUI",
+        "Welcome to ME-Bike GUIようこそ",
         size=50,
         weight=ft.FontWeight.W_900,
         color=ft.colors.BLACK,
-        selectable=False
+        selectable=False,
+        font_family="BIZ UDPGothic"
     )
     page.add(text)
     page.update()
