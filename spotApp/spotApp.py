@@ -92,7 +92,7 @@ def main(page: ft.Page):
                             ft.ElevatedButton(
                                 content=ft.Text(
                                     value="利用開始",
-                                    size=30,
+                                    size=60,
                                     font_family="BIZ UDPGothic"
                                 ),
                                 on_click=open_01_token
