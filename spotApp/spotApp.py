@@ -40,13 +40,31 @@ def main(page: ft.Page):
                 "/",
                 [
                     page.appbar,
-                    ft.Text(
-                        "ME-Bikeへようこそ",
-                        size=50,
-                        weight=ft.FontWeight.W_900,
-                        color=ft.colors.BLACK,
-                        selectable=False,
-                        font_family="BIZ UDPGothic"
+                    ft.Container(ft.Column([
+                        ft.Row([
+                            ft.Text("ME-BikeIcon"), ft.Text("QrCode"),
+                        ], alignment=ft.MainAxisAlignment.CENTER),
+                        ft.Row([
+                            ft.Text(
+                                "ME-Bike舞鶴高専ステーション",
+                                size=35,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            ),
+                        ], alignment=ft.MainAxisAlignment.CENTER),
+                        ft.Row([
+                            ft.Text(
+                                "QRコードを読み取って利用開始",
+                                size=20,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ], alignment=ft.MainAxisAlignment.CENTER),
+                    ],alignment=ft.MainAxisAlignment.END),
+                    margin=10,
+                    padding=10,
                     )
                 ],
             )
