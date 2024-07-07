@@ -5,8 +5,8 @@ def main(page: ft.Page):
     #ページ設定
     #------
     page.title = "ME-Bike GUI"
-    page.window_max_width = 673.92
-    page.window_max_height = 396.48
+    page.window_max_width = 1920
+    page.window_max_height = 1080
     page.window_minimizable =False
     page.window_maximizable = True
     page.window_resizable = True
@@ -20,7 +20,7 @@ def main(page: ft.Page):
     #AppBar(上部バナー)
     page.appbar = ft.AppBar(
         leading=ft.Icon(ft.icons.PEDAL_BIKE_SHARP),
-        leading_width=40,
+        leading_width=80,
         title=ft.Text("ME-Bike Station"),
         center_title= False,
         bgcolor=ft.colors.SURFACE_VARIANT
@@ -42,27 +42,38 @@ def main(page: ft.Page):
                     page.appbar,
                     ft.Container(ft.Column([
                         ft.Row([
-                            ft.Text("ME-BikeIcon"), ft.Text("QrCode"),
-                        ], alignment=ft.MainAxisAlignment.CENTER),
-                        ft.Row([
                             ft.Text(
-                                "ME-Bike舞鶴高専ステーション",
-                                size=35,
+                                "ME-Bike 舞鶴高専ステーション",
+                                size=80,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             ),
-                        ], alignment=ft.MainAxisAlignment.CENTER),
+                        ],alignment=ft.MainAxisAlignment.CENTER),
                         ft.Row([
                             ft.Text(
                                 "QRコードを読み取って利用開始",
-                                size=20,
+                                size=50,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.CENTER),
-                    ],alignment=ft.MainAxisAlignment.END),
+                        ft.Row([
+                            ft.Image(
+                                src=f"ME-Bike.jpg",
+                                width=500,
+                                height=500,
+                                fit=ft.ImageFit.CONTAIN
+                            ),
+                            ft.Image(
+                                src=f"qr.png",
+                                width=500,
+                                height=500,
+                                fit=ft.ImageFit.CONTAIN
+                            )
+                        ],spacing=20,alignment=ft.MainAxisAlignment.CENTER),
+                    ],),
                     margin=10,
                     padding=10,
                     )
