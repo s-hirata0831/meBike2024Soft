@@ -88,6 +88,12 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ],alignment=ft.MainAxisAlignment.CENTER, vertical_alignment=ft.CrossAxisAlignment.END),
+                        ft.Row([
+                            ft.ElevatedButton(
+                                text="Start",
+                                on_click=open_01_token
+                            )
+                        ],alignment=ft.MainAxisAlignment.CENTER)
                     ],),
                     margin=10,
                     padding=10,
