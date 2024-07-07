@@ -16,6 +16,14 @@ def main(page: ft.Page):
         "BIZ UDPGothic": "BIZUDPGothic-Regular.ttf"
     }
 
+    page.appbar = ft.AppBar(
+        leading=ft.Icon(ft.icons.PEDAL_BIKE_SHARP),
+        leading_width=40,
+        title=ft.Text("ME-Bike Station"),
+        center_title= False,
+        bgcolor=ft.colors.SURFACE_VARIANT
+    )
+
     text = ft.Text(
         "Welcome to ME-Bike GUIようこそ1fl",
         size=50,
