@@ -33,7 +33,7 @@ def main(page: ft.Page):
     def route_change(e):
         #ページのクリア
         page.views.clear()
-
+        
         #トップページ
         page.views.append(
             ft.View(
@@ -46,7 +46,7 @@ def main(page: ft.Page):
                         weight=ft.FontWeight.W_900,
                         color=ft.colors.BLACK,
                         selectable=False,
-                        font_family="BIZ UPDGothic"
+                        font_family="BIZ UDPGothic"
                     )
                 ],
             )
@@ -64,7 +64,7 @@ def main(page: ft.Page):
                             weight=ft.FontWeight.W_900,
                             color=ft.colors.BLACK,
                             selectable=False,
-                            font_family="BIZ UPDGothic"
+                            font_family="BIZ UDPGothic"
                         )
                     ],
                 )
