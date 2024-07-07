@@ -1,4 +1,5 @@
 import flet as ft
+import datetime
 
 def main(page: ft.Page):
     #------
@@ -25,6 +26,11 @@ def main(page: ft.Page):
         center_title= False,
         bgcolor=ft.colors.SURFACE_VARIANT
     )
+
+    #------
+    #現在時刻取得
+    #------
+    now = datetime.datetime.now()
 
 
     #------
@@ -73,6 +79,15 @@ def main(page: ft.Page):
                                 fit=ft.ImageFit.CONTAIN
                             )
                         ],spacing=20,alignment=ft.MainAxisAlignment.CENTER),
+                        ft.Row([
+                            ft.Text(
+                                '最近のリロード: '+str(now),
+                                size=40,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ],spacing=40,alignment=ft.MainAxisAlignment.CENTER),
                     ],),
                     margin=10,
                     padding=10,
