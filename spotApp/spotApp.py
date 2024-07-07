@@ -90,7 +90,11 @@ def main(page: ft.Page):
                         ],alignment=ft.MainAxisAlignment.CENTER, vertical_alignment=ft.CrossAxisAlignment.END),
                         ft.Row([
                             ft.ElevatedButton(
-                                text="Start",
+                                content=ft.Text(
+                                    value="利用開始",
+                                    size=30,
+                                    font_family="BIZ UDPGothic"
+                                ),
                                 on_click=open_01_token
                             )
                         ],alignment=ft.MainAxisAlignment.CENTER)
