@@ -13,11 +13,11 @@ def main(page: ft.Page):
     page.window_skip_task_bar = False
 
     page.fonts={
-        "BIZ UDPGothic": "https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+        "BIZ UDPGothic": "BIZUDPGothic-Regular.ttf"
     }
 
     text = ft.Text(
-        "Welcome to ME-Bike GUIようこそ",
+        "Welcome to ME-Bike GUIようこそ1fl",
         size=50,
         weight=ft.FontWeight.W_900,
         color=ft.colors.BLACK,
