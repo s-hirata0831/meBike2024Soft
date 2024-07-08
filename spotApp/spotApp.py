@@ -81,7 +81,7 @@ def main(page: ft.Page):
                         ],spacing=20,alignment=ft.MainAxisAlignment.CENTER),
                         ft.Row([
                             ft.Text(
-                                '最近のリロード: '+str(now),
+                                '最近の利用: '+str(now),
                                 size=40,
                                 color=ft.colors.BLACK,
                                 selectable=False,
@@ -112,14 +112,25 @@ def main(page: ft.Page):
                 ft.View(
                     "/01_token",
                     [
-                        ft.Text(
-                            "ME-Bikeへようこそ",
-                            size=50,
-                            weight=ft.FontWeight.W_900,
-                            color=ft.colors.BLACK,
-                            selectable=False,
-                            font_family="BIZ UDPGothic"
-                        )
+                        page.appbar,
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                value="back",
+                                font_family="BIZ UDPGothic"
+                            ),
+                            on_click=open_00_top,
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Row([
+                            ft.Text(
+                                "トークンを入力",
+                                size=60,
+                                weight=ft.FontWeight.W_900,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ], alignment=ft.MainAxisAlignment.START),
                     ],
                 )
             )
@@ -135,6 +146,12 @@ def main(page: ft.Page):
     def view_pop(e):
         page.views.pop()
         top_view = page.views[-1]
+        page.go(top_view.route)
+
+    #TOPページへ戻る
+    def open_00_top(e):
+        page.views.pop()
+        top_view = page.views[0]
         page.go(top_view.route)
 
     #01_tokenへ移動
