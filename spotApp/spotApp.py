@@ -33,13 +33,6 @@ def main(page: ft.Page):
     #------
     now = datetime.datetime.now()
 
-    #------
-    #トークン生成(整数6桁)
-    #------
-    def random():
-        return rnd.randint(100000,999999)
-    randomNum = random()
-
 
     #------
     #画面表示
@@ -116,6 +109,8 @@ def main(page: ft.Page):
 
         #トークン入力画面
         if page.route == "/01_token":
+            #トークンを生成
+            random = rnd.randint(100000,999999)
             page.views.append(
                 ft.View(
                     "/01_token",
@@ -152,7 +147,7 @@ def main(page: ft.Page):
                         ], alignment=ft.MainAxisAlignment.START),
                         ft.Row([
                             ft.Text(
-                                rnd.randint(100000,999999),
+                                random,
                                 size=120,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
