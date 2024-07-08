@@ -132,6 +132,16 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.START),
+                        ft.Row([
+                            ft.Text(
+                                "ウェブアプリ上に以下の数字を入力してください。",
+                                size=50,
+                                weight=ft.FontWeight.W_900,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ], alignment=ft.MainAxisAlignment.START),
                     ],
                 )
             )
