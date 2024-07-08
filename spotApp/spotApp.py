@@ -1,5 +1,6 @@
 import flet as ft
 import datetime
+import random
 
 def main(page: ft.Page):
     #------
@@ -31,6 +32,13 @@ def main(page: ft.Page):
     #現在時刻取得
     #------
     now = datetime.datetime.now()
+
+    #------
+    #トークン生成(整数6桁)
+    #------
+    def random():
+        return random.randint(100000,999999)
+    randomNum = random()
 
 
     #------
@@ -142,6 +150,16 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.START),
+                        ft.Row([
+                            ft.Text(
+                                randomNum,
+                                size=120,
+                                weight=ft.FontWeight.W_900,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ], alignment=ft.MainAxisAlignment.CENTER),
                     ],
                 )
             )
