@@ -113,14 +113,15 @@ def main(page: ft.Page):
                     "/01_token",
                     [
                         page.appbar,
+                        ft.Row([
                         ft.ElevatedButton(
                             content=ft.Text(
                                 value="back",
                                 font_family="BIZ UDPGothic"
                             ),
                             on_click=open_00_top,
-                            alignment=ft.MainAxisAlignment.END
-                        ),
+                        )
+                        ],alignment=ft.MainAxisAlignment.END),
                         ft.Row([
                             ft.Text(
                                 "トークンを入力",
