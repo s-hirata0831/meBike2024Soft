@@ -152,7 +152,7 @@ def main(page: ft.Page):
                         ], alignment=ft.MainAxisAlignment.START),
                         ft.Row([
                             ft.Text(
-                                randomNum,
+                                rnd.randint(100000,999999),
                                 size=120,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
