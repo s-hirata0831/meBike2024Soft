@@ -1,6 +1,6 @@
 import flet as ft
 import datetime
-import random
+import random as rnd
 
 def main(page: ft.Page):
     #------
@@ -37,7 +37,7 @@ def main(page: ft.Page):
     #トークン生成(整数6桁)
     #------
     def random():
-        return random.randint(100000,999999)
+        return rnd.randint(100000,999999)
     randomNum = random()
 
 
