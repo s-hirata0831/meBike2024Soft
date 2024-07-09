@@ -1,6 +1,7 @@
 import flet as ft
 import datetime
 import random as rnd
+import os
 import firebase_admin
 from firebase_admin import firestore
 
