@@ -1,6 +1,21 @@
 import flet as ft
 import datetime
 import random as rnd
+import firebase_admin
+from firebase_admin import firestore
+
+#Firebaseを初期化s
+app = firebase_admin.initialize_app()
+db = firestore.client()
+
+# Web APIキー
+api_key = os.environ.get('API_KEY')
+ 
+# プロジェクトID
+project_id = os.environ.get('PROJECT_ID')
+
+#FirebaseのドキュメントIDを指定
+city_ref = db.collection("token").document("nitMaizuruCollege")
 
 def main(page: ft.Page):
     #------
@@ -111,6 +126,7 @@ def main(page: ft.Page):
         if page.route == "/01_token":
             #トークンを生成
             random = rnd.randint(100000,999999)
+            city_ref.update({"token_f": random})
             page.views.append(
                 ft.View(
                     "/01_token",
