@@ -6,6 +6,9 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 
+#------
+#Firebase初期設定
+#------
 #Firebaseを初期化
 cred = credentials.Certificate('meBike.json')
 firebase_admin.initialize_app(cred)
@@ -20,6 +23,9 @@ project_id = os.environ.get('PROJECT_ID')
 #FirebaseのドキュメントIDを指定
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
+#------
+#画面出力
+#------
 def main(page: ft.Page):
     #------
     #ページ設定
@@ -164,6 +170,16 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.START),
+                        ft.Row([
+                            ft.text(
+                                "入力できたら次へ進む。",
+                                size=50,
+                                weigth=ft.FontWeight.W_900,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic"
+                            )
+                        ], alignment=ft.MainAxisAlignment.START)
                         ft.Row([
                             ft.Text(
                                 random,
