@@ -7,9 +7,9 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 
 #Firebaseを初期化
-db = firestore.client()
 cred = credentials.Certificate('meBike.json')
-app = firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 # Web APIキー
 api_key = os.environ.get('API_KEY')
