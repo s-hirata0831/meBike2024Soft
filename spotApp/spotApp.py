@@ -171,7 +171,7 @@ def main(page: ft.Page):
                             )
                         ], alignment=ft.MainAxisAlignment.START),
                         ft.Row([
-                            ft.text(
+                            ft.Text(
                                 "入力できたら次へ進む。",
                                 size=50,
                                 weigth=ft.FontWeight.W_900,
