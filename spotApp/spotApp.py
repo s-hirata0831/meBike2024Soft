@@ -4,10 +4,12 @@ import random as rnd
 import os
 import firebase_admin
 from firebase_admin import firestore
+from firebase_admin import credentials
 
-#Firebaseを初期化s
+#Firebaseを初期化
 app = firebase_admin.initialize_app()
 db = firestore.client()
+cred = credentials.Certificate('meBike.json')
 
 # Web APIキー
 api_key = os.environ.get('API_KEY')
