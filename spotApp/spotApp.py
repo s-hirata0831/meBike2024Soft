@@ -179,7 +179,7 @@ def main(page: ft.Page):
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             )
-                        ], alignment=ft.MainAxisAlignment.START)
+                        ], alignment=ft.MainAxisAlignment.START),
                         ft.Row([
                             ft.Text(
                                 random,
