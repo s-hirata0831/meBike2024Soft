@@ -174,7 +174,7 @@ def main(page: ft.Page):
                             ft.Text(
                                 "入力できたら次へ進む。",
                                 size=50,
-                                weigth=ft.FontWeight.W_900,
+                                weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
