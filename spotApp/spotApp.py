@@ -39,6 +39,7 @@ def main(page: ft.Page):
     page.window_full_screen = True
     page.window_always_on_top = True
     page.window_skip_task_bar = True
+    page.bgcolor=ft.colors.WHITE
     #フォント
     page.fonts={
         "BIZ UDPGothic": "BIZUDPGothic-Regular.ttf"
