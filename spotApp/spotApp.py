@@ -181,7 +181,7 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.START),
-                        ft.Container([
+                        ft.Row([
                             ft.Text(
                                 random,
                                 size=120,
