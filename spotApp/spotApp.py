@@ -191,7 +191,7 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic",
                                 bgcolor=ft.colors.AMBER
                             )
-                        ], alignment=ft.MainAxisAlignment.CENTER, width=300,height=300)
+                        ], width=300,height=300, alignment=ft.MainAxisAlignment.CENTER,)
                     ]
                 )
             )
