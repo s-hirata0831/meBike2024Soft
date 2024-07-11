@@ -182,7 +182,9 @@ def main(page: ft.Page):
                             )
                         ], alignment=ft.MainAxisAlignment.START)
                     ]
-                ),
+                )
+            )
+            page.views.append(
                 ft.Row([
                     ft.Text(
                         random,
