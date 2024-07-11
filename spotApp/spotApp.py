@@ -181,7 +181,7 @@ def main(page: ft.Page):
                                 font_family="BIZ UDPGothic"
                             )
                         ], alignment=ft.MainAxisAlignment.START),
-                        ft.Row([
+                        ft.Container([
                             ft.Text(
                                 random,
                                 size=120,
@@ -190,7 +190,13 @@ def main(page: ft.Page):
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             )
-                        ], alignment=ft.MainAxisAlignment.CENTER),
+                        ], alignment=ft.MainAxisAlignment.CENTER,
+                            width=300,
+                            height=300,
+                            bgcolor=ft.colors.AMBER,
+                            border_radius=10,
+                            margin=10,
+                            padding=10),
                     ],
                 )
             )
