@@ -180,24 +180,22 @@ def main(page: ft.Page):
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
                             )
-                        ], alignment=ft.MainAxisAlignment.START)
+                        ], alignment=ft.MainAxisAlignment.START),
+                        ft.Row([
+                            ft.Text(
+                                random,
+                                size=120,
+                                weight=ft.FontWeight.W_900,
+                                color=ft.colors.BLACK,
+                                selectable=False,
+                                font_family="BIZ UDPGothic",
+                                width=2000,
+                                height=1000,
+                                text_align=ft.TextAlign.CENTER
+                            )
+                        ], vertical_alignment=ft.CrossAxisAlignment.CENTER,)
                     ]
                 )
-            )
-            page.views.append(
-                ft.Row([
-                    ft.Text(
-                        random,
-                        size=120,
-                        weight=ft.FontWeight.W_900,
-                        color=ft.colors.BLACK,
-                        selectable=False,
-                        font_family="BIZ UDPGothic",
-                        width=2000,
-                        height=1000,
-                        text_align=ft.TextAlign.CENTER
-                    )
-                ],alignment=ft.MainAxisAlignment.CENTER, vertical_alignment=ft.CrossAxisAlignment.CENTER)
             )
         
         #ページ更新
