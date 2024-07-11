@@ -142,16 +142,15 @@ def main(page: ft.Page):
                     "/01_token",
                     [
                         page.appbar,
-                        ft.Row([
                         ft.ElevatedButton(
                             content=ft.Text(
-                                value="back",
-                                font_family="BIZ UDPGothic"
+                               value="back",
+                               font_family="BIZ UDPGothic"
                             ),
                             on_click=open_00_top,
-                        )
-                        ],alignment=ft.MainAxisAlignment.END),
-                        ft.Row([
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Row(
                             ft.Text(
                                 "トークンを入力",
                                 size=60,
@@ -159,19 +158,21 @@ def main(page: ft.Page):
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            )
-                        ], alignment=ft.MainAxisAlignment.START),
-                        ft.Row([
+                            ),
+                            alignment=ft.MainAxisAlignment.START
+                        ),
+                        ft.Row(
                             ft.Text(
-                                "ウェブアプリ上に以下の数字を入力してください。",
+                                "Webアプリ上に以下の数字を入力してください。",
                                 size=50,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            )
-                        ], alignment=ft.MainAxisAlignment.START),
-                        ft.Row([
+                            ),
+                            alignment=ft.MainAxisAlignment.START
+                        ),
+                        ft.Row(
                             ft.Text(
                                 "入力できたら次へ進む。",
                                 size=50,
@@ -179,9 +180,10 @@ def main(page: ft.Page):
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            )
-                        ], alignment=ft.MainAxisAlignment.START),
-                        ft.Row([
+                            ),
+                            alignment=ft.MainAxisAlignment.START
+                        ),
+                        ft.Row(
                             ft.Text(
                                 random,
                                 size=120,
@@ -192,8 +194,10 @@ def main(page: ft.Page):
                                 width=2000,
                                 height=1000,
                                 text_align=ft.TextAlign.CENTER
-                            )
-                        ], vertical_alignment=ft.CrossAxisAlignment.CENTER,)
+                            ),
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            vertical_alignment=ft.CrossAxisAlignment.CENTER
+                        )
                     ]
                 )
             )
