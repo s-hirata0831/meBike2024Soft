@@ -189,9 +189,11 @@ def main(page: ft.Page):
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic",
-                                bgcolor=ft.colors.AMBER
+                                bgcolor=ft.colors.AMBER,
+                                width=300,
+                                height=300
                             )
-                        ], width=300,height=300, alignment=ft.MainAxisAlignment.CENTER,)
+                        ],alignment=ft.MainAxisAlignment.CENTER,)
                     ]
                 )
             )
