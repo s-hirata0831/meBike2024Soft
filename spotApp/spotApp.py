@@ -190,8 +190,8 @@ def main(page: ft.Page):
                                 selectable=False,
                                 font_family="BIZ UDPGothic",
                                 bgcolor=ft.colors.AMBER,
-                                width=1000,
-                                height=600,
+                                width=2000,
+                                height=1000,
                                 text_align=ft.TextAlign.CENTER
                             )
                         ],alignment=ft.MainAxisAlignment.CENTER,)
