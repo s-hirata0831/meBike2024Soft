@@ -180,7 +180,7 @@ def main(page: ft.Page):
                                     font_family="BIZ UDPGothic"
                                 )
                             ],horizontal_alignment=ft.CrossAxisAlignment.START),
-                            ft.Column([
+                            ft.Row([
                                 ft.Text(
                                     random,
                                     size=120,
