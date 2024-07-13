@@ -189,7 +189,7 @@ def main(page: ft.Page):
                                     selectable=False,
                                     font_family="BIZ UDPGothic"
                                 )
-                            ],horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                            ],horizontal_alignment=ft.alignment.center)
                         ],alignment=ft.MainAxisAlignment.END)
                     ]
                 )
