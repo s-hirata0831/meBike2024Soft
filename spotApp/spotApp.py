@@ -220,7 +220,7 @@ def main(page: ft.Page):
                     [
                         page.appbar,
                         ft.Container(
-                            ft.Column([
+                            content=ft.Column([
                                 ft.Row([
                                     ft.Text(
                                         "トークンを照合中...",
