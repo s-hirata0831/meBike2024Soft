@@ -219,6 +219,17 @@ def main(page: ft.Page):
                     "/02_tokenCheck",
                     [
                         page.appbar,
+                        ft.Row(
+                            [ft.ElevatedButton(
+                                content=ft.Text(
+                                    "back",
+                                    size=40,
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_01_token,
+                            )],
+                            alignment=ft.MainAxisAlignment.END
+                        ),
                         ft.Container(
                             content=ft.Column([
                                 ft.Row([
@@ -240,7 +251,7 @@ def main(page: ft.Page):
                             ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             alignment=ft.alignment.bottom_center,
                             width=1980,
-                            height=1000
+                            height=960
                         )
                     ]
                 )
