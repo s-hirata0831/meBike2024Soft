@@ -237,7 +237,7 @@ def main(page: ft.Page):
                             ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             alignment=ft.alignment.bottom_center,
                             width=1980,
-                            height=1080,
+                            height=1000,
                             bgcolor=ft.colors.GREEN_200
                         )
                     ]
