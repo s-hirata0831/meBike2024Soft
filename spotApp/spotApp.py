@@ -23,9 +23,6 @@ project_id = os.environ.get('PROJECT_ID')
 #FirebaseのドキュメントIDを指定(こちらから登録するトークン)
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
-#FirebaseのドキュメントIDを指定(ウェブアプリ上で入力されたトークン)
-doc_ref = db.collection("inputToken").document("nitMaizuruCollege")
-
 #------
 #画面出力
 #------
@@ -261,11 +258,11 @@ def main(page: ft.Page):
             )
             while True:
                 #入力されたトークンを取得
-                doc = doc_ref.get()
-                token = city_ref.get()
-                print(doc.to_dict())
+                token = city_ref.get({"token_f"})
+                input = city_ref.get({"inputToken"})
                 print(token.to_dict())
-                if doc.to_dict() == token.to_dict():
+                print(input.to_dict())
+                if token.to_dict() == input.to_dict():
                     open_00_top
         
         #ページ更新
