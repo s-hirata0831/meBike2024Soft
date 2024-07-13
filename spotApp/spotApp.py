@@ -232,13 +232,15 @@ def main(page: ft.Page):
                                     )
                                 ], alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
-                                    ft.ProgressRing()
+                                    ft.ProgressRing(
+                                        width=75,
+                                        height=75
+                                    )
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             alignment=ft.alignment.bottom_center,
                             width=1980,
-                            height=1000,
-                            bgcolor=ft.colors.GREEN_200
+                            height=1000
                         )
                     ]
                 )
