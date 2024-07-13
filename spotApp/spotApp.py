@@ -164,29 +164,29 @@ def main(page: ft.Page):
                             alignment=ft.MainAxisAlignment.START
                         ),
                         ft.Row(
-                            ft.Text(
+                            [ft.Text(
                                 "Webアプリ上に以下の数字を入力してください。",
                                 size=50,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            ),
+                            )],
                             alignment=ft.MainAxisAlignment.START
                         ),
                         ft.Row(
-                            ft.Text(
+                            [ft.Text(
                                 "入力できたら次へ進む。",
                                 size=50,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            ),
+                            )],
                             alignment=ft.MainAxisAlignment.START
                         ),
                         ft.Row(
-                            ft.Text(
+                            [ft.Text(
                                 random,
                                 size=120,
                                 weight=ft.FontWeight.W_900,
@@ -196,7 +196,7 @@ def main(page: ft.Page):
                                 width=2000,
                                 height=1000,
                                 text_align=ft.TextAlign.CENTER
-                            ),
+                            )],
                             alignment=ft.MainAxisAlignment.CENTER,
                             vertical_alignment=ft.CrossAxisAlignment.CENTER
                         )
