@@ -144,7 +144,7 @@ def main(page: ft.Page):
                         page.appbar,
                         ft.Container(
                             content=ft.ElevatedButton(
-                                [ft.Text(
+                                content=[ft.Text(
                                     "back",
                                     size=40,
                                     font_family="BIZ UDPGothic"
