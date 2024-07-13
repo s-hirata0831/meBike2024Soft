@@ -263,6 +263,8 @@ def main(page: ft.Page):
                 #入力されたトークンを取得
                 doc = doc_ref.get()
                 token = city_ref.get()
+                print(doc)
+                print(token)
                 if doc == token:
                     open_00_top
         
