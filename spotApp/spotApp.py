@@ -143,7 +143,7 @@ def main(page: ft.Page):
                     [
                         page.appbar,
                         ft.Container(
-                            ft.ElevatedButton(
+                            content=ft.ElevatedButton(
                                 content=ft.Text(
                                     value="back",
                                     font_family="BIZ UDPGothic"
