@@ -150,14 +150,14 @@ def main(page: ft.Page):
                             alignment=ft.alignment.center_right
                         ),
                         ft.Row(
-                            ft.Text(
+                            [ft.Text(
                                 "トークンを入力",
                                 size=60,
                                 weight=ft.FontWeight.W_900,
                                 color=ft.colors.BLACK,
                                 selectable=False,
                                 font_family="BIZ UDPGothic"
-                            ),
+                            )],
                             alignment=ft.MainAxisAlignment.START
                         ),
                         ft.Row(
