@@ -144,10 +144,7 @@ def main(page: ft.Page):
                         page.appbar,
                         ft.Container(
                             content=ft.ElevatedButton(
-                                content=ft.Text(
-                                    value="back",
-                                    font_family="BIZ UDPGothic"
-                                ),
+                                content="back",
                                 on_click=open_00_top,
                             ),
                             alignment=ft.alignment.center_right
