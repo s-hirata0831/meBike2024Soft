@@ -142,13 +142,15 @@ def main(page: ft.Page):
                     "/01_token",
                     [
                         page.appbar,
-                        ft.ElevatedButton(
-                            content=ft.Text(
-                               value="back",
-                               font_family="BIZ UDPGothic"
+                        ft.Container(
+                            ft.ElevatedButton(
+                                content=ft.Text(
+                                    value="back",
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_00_top,
                             ),
-                            on_click=open_00_top,
-                            alignment=ft.MainAxisAlignment.END
+                            alignment=ft.alignment.center_right
                         ),
                         ft.Row(
                             ft.Text(
