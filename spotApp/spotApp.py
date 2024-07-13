@@ -260,9 +260,9 @@ def main(page: ft.Page):
                 #入力されたトークンを取得
                 token = city_ref.get({"token_f"})
                 input = city_ref.get({"inputToken"})
-                print(token.to_dict())
-                print(input.to_dict())
-                if token.to_dict() == input.to_dict():
+                print(token)
+                print(input)
+                if token == input:
                     open_00_top
         
         #ページ更新
