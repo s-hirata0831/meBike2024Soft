@@ -181,7 +181,7 @@ def main(page: ft.Page):
                                 )
                             ],horizontal_alignment=ft.CrossAxisAlignment.START),
                             ft.Row([
-                                ft.Text(
+                                ft.Image(
                                     src=f"ME-Bike.jpg",
                                     width=500,
                                     height=500,
@@ -189,7 +189,7 @@ def main(page: ft.Page):
                                 )
                             ],alignment=ft.MainAxisAlignment.CENTER),
                             ft.Row([
-                                ft.Image(
+                                ft.Text(
                                     random,
                                     size=120,
                                     weight=ft.FontWeight.W_900,
