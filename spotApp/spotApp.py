@@ -151,7 +151,7 @@ def main(page: ft.Page):
                                 ),
                                 on_click=open_00_top,
                             )],
-                            alignment=ft.alignment.center_right
+                            alignment=ft.MainAxisAlignment.END
                         ),
                         ft.Row(
                             [ft.Text(
