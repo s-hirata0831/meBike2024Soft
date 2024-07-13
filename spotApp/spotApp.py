@@ -263,9 +263,9 @@ def main(page: ft.Page):
                 #入力されたトークンを取得
                 doc = doc_ref.get()
                 token = city_ref.get()
-                print(doc)
-                print(token)
-                if doc == token:
+                print(doc.to_dict())
+                print(token.to_dict())
+                if doc.to_dict() == token.to_dict():
                     open_00_top
         
         #ページ更新
