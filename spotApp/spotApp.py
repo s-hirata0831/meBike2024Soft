@@ -20,7 +20,7 @@ api_key = os.environ.get('API_KEY')
 # プロジェクトID
 project_id = os.environ.get('PROJECT_ID')
 
-#FirebaseのドキュメントIDを指定(こちらから登録するトークン)
+#FirebaseのドキュメントIDを指定
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
 #------
@@ -258,8 +258,8 @@ def main(page: ft.Page):
             )
             while True:
                 #入力されたトークンを取得
-                token = city_ref.get({"token_f"})
-                input = city_ref.get({"inputToken"})
+                token = city_ref.get.to_dict().get('token_f')
+                input = city_ref.get.to_dict().get('inputToken')
                 print(token)
                 print(input)
                 if token == input:
