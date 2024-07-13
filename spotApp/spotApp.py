@@ -235,7 +235,7 @@ def main(page: ft.Page):
                                     ft.ProgressRing()
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
-                            alignment=ft.alignment.center
+                            alignment=ft.alignment.bottom_center
                         )
                     ]
                 )
