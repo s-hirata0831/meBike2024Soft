@@ -155,30 +155,36 @@ def main(page: ft.Page):
                         ),
                         ft.Column([
                             ft.Row([
-                                ft.Text(
-                                    "トークンを入力",
-                                    size=60,
-                                    weight=ft.FontWeight.W_900,
-                                    color=ft.colors.BLACK,
-                                    selectable=False,
-                                    font_family="BIZ UDPGothic"
-                                ),
-                                ft.Text(
-                                    "Webアプリ上に以下の数字を入力してください。",
-                                    size=50,
-                                    weight=ft.FontWeight.W_900,
-                                    color=ft.colors.BLACK,
-                                    selectable=False,
-                                    font_family="BIZ UDPGothic"
-                                ),
-                                ft.Text(
-                                    "入力できたら次へ進む",
-                                    size=50,
-                                    weight=ft.FontWeight.W_900,
-                                    color=ft.colors.BLACK,
-                                    selectable=False,
-                                    font_family="BIZ UDPGothic"
-                                )
+                                ft.Row([
+                                    ft.Text(
+                                        "トークンを入力",
+                                        size=60,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ]),
+                                ft.Row([
+                                    ft.Text(
+                                        "Webアプリ上に以下の数字を入力してください。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ]),
+                                ft.Row([
+                                    ft.Text(
+                                        "入力できたら次へ進む",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ]),
                             ],alignment=ft.MainAxisAlignment.START),
                             ft.Row([
                                 ft.Text(
