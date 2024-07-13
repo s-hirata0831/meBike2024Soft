@@ -205,7 +205,7 @@ def main(page: ft.Page):
                                         size=60,
                                         font_family="BIZ UDPGothic"                                        
                                     ),
-                                    on_click=open
+                                    on_click=open_02_tokenCheck
                                 )
                             ],alignment=ft.MainAxisAlignment.CENTER)
                         ],alignment=ft.MainAxisAlignment.END)
