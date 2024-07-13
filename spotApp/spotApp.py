@@ -197,8 +197,46 @@ def main(page: ft.Page):
                                     selectable=False,
                                     font_family="BIZ UDPGothic"
                                 )
+                            ],alignment=ft.MainAxisAlignment.CENTER),
+                            ft.Row([
+                                ft.ElevatedButton(
+                                    content=ft.Text(
+                                        "次へ",
+                                        size=60,
+                                        font_family="BIZ UDPGothic"                                        
+                                    ),
+                                    on_click=open
+                                )
                             ],alignment=ft.MainAxisAlignment.CENTER)
                         ],alignment=ft.MainAxisAlignment.END)
+                    ]
+                )
+            )
+
+        if page.route == "/02_tokenCheck":
+            page.views.append(
+                ft.View(
+                    "/02_tokenCheck",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "トークンを照合中...",
+                                        size=100,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ProgressRing()
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            alignment=ft.alignment.center
+                        )
                     ]
                 )
             )
@@ -225,6 +263,10 @@ def main(page: ft.Page):
     #01_tokenへ移動
     def open_01_token(e):
         page.go("/01_token")
+    
+    #02_tokenCheckへ移動
+    def open_02_tokenCheck(e):
+        page.go("/02_tokenCheck")
 
     #------
     #イベントの登録
