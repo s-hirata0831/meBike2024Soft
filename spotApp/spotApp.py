@@ -182,10 +182,10 @@ def main(page: ft.Page):
                             ],horizontal_alignment=ft.CrossAxisAlignment.START),
                             ft.Row([
                                 ft.Image(
-                                    src=f"ME-Bike.jpg",
-                                    width=500,
-                                    height=500,
-                                    fit=ft.ImageFit.NONE
+                                    src=f"qr.png",
+                                    width=300,
+                                    height=300,
+                                    fit=ft.ImageFit.CONTAIN
                                 )
                             ],alignment=ft.MainAxisAlignment.CENTER),
                             ft.Row([
