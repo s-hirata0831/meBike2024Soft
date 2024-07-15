@@ -264,7 +264,7 @@ def main(page: ft.Page):
             print(input)
             if token == input:
                 open_04_face
-            else:
+            elif token != input:
                 open_03_tokenFaild
 
         if page.route == "/03_tokenFaild":
