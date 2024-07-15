@@ -17,7 +17,7 @@ def music_play(file):
 # 自転車の状態管理
 #------
 # 待ち受けの1サイクル秒
-TIME_cycle = 0.1
+TIME_cycle = 1
 # 待ち受けの反応インターバル秒
 TIME_interval = 0.1
 
