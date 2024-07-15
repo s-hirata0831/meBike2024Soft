@@ -667,12 +667,87 @@ def main(page: ft.Page):
                                             size=60,
                                             font_family="BIZ UDPGothic"
                                         ),
-                                        #on_click=open_10_back
+                                        on_click=open_10_back
                                     )
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             width=1980,
                             height=1000
+                        )
+                    ]
+                )
+            )
+
+        if page.route == "/10_back":
+            page.views.append(
+                ft.View(
+                    "/10_back",
+                    [
+                        page.appbar,
+                        ft.Row(
+                            [ft.ElevatedButton(
+                                content=ft.Text(
+                                    "back",
+                                    size=40,
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_09_sleep,
+                            )],
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "返却",
+                                        size=120,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    ),
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "自転車前輪をロックしてください。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src=f"ME-Bike.jpg",
+                                        width=500,
+                                        height=500,
+                                        fit=ft.ImageFit.CONTAIN
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "終了ボタンを押すと、近くに自転車がないと警報が発動します。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "終了",
+                                            size=60,
+                                            font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_11_top
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=960
                         )
                     ]
                 )
@@ -736,6 +811,15 @@ def main(page: ft.Page):
     #10_backへ移動
     def open_10_back(e):
         page.go("/10_back")
+
+    #一連の後TOPページへ戻る
+    def open_11_top(e):
+        page.views.pop()
+        top_view = page.views[0]
+        f = open('lockState.txt', 'w')
+        f.write('0')
+        f.close()
+        page.go(top_view.route)
 
     #------
     #イベントの登録
