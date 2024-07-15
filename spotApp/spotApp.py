@@ -667,7 +667,7 @@ def main(page: ft.Page):
                                             size=60,
                                             font_family="BIZ UDPGothic"
                                         ),
-                                        on_click=open_10_back
+                                        #on_click=open_10_back
                                     )
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
