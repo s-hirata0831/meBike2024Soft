@@ -86,7 +86,7 @@ def main(page: ft.Page):
                         ],alignment=ft.MainAxisAlignment.CENTER),
                         ft.Row([
                             ft.Text(
-                                "QRコードを読み取って利用開始",
+                                "利用開始ボタンでスタート",
                                 size=50,
                                 color=ft.colors.BLACK,
                                 selectable=False,
@@ -591,6 +591,10 @@ def main(page: ft.Page):
     #07_unLockへ移動
     def open_07_unLock(e):
         page.go("/07_unLock")
+
+    #08_unLockInfoへ移動
+    def open_08_unLockInfo(e):
+        page.go("/08_unLockInfo")
 
     #------
     #イベントの登録
