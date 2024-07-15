@@ -267,9 +267,9 @@ def main(page: ft.Page):
             elif token != input:
                 print(False)
             if token == input:
-                open_04_face()
+                open_04_face(e)
             elif token != input:
-                open_03_tokenFaild()
+                open_03_tokenFaild(e)
 
         if page.route == "/03_tokenFaild":
             page.views.append(
