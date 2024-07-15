@@ -48,7 +48,7 @@ def main(page: ft.Page):
     page.appbar = ft.AppBar(
         leading=ft.Icon(ft.icons.PEDAL_BIKE_SHARP),
         leading_width=80,
-        title=ft.Text("ME-Bike Station (舞鶴高専ステーション)"),
+        title=ft.Text("ME-Bike Station (舞鶴高専ステーション)", font_family="BIZ UDPGothic"),
         center_title= False,
         bgcolor=ft.colors.SURFACE_VARIANT
     )
@@ -337,12 +337,14 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Text(
                                         "準備ができたら撮影ボタンを押してカメラを見てください。",
-                                        size=60,
+                                        size=50,
                                         weight=ft.FontWeight.W_900,
                                         color=ft.colors.BLACK,
                                         selectable=False,
                                         font_family="BIZ UDPGothic"
-                                    ),
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
                                     ft.Image(
                                         src=f"cam.png",
                                         width=500,
@@ -358,7 +360,7 @@ def main(page: ft.Page):
                                             font_family="BIZ UDPGothic"
                                         )
                                     )
-                                ])
+                                ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             width=1980,
                             height=960
