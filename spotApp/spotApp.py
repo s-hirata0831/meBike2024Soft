@@ -546,11 +546,11 @@ def main(page: ft.Page):
                 )
             )
 
-        if page.route == "/09_sleep":
+        if page.route == "/08_unLockInfo":
             page.views.clear()
             page.views.append(
                 ft.View(
-                    "/09_sleep",
+                    "/08_unLockInfo",
                     [
                         page.appbar,
                         ft.Container(
