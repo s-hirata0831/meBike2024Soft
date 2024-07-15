@@ -263,6 +263,10 @@ def main(page: ft.Page):
             print(token)
             print(input)
             if token == input:
+                print(True)
+            elif token != input:
+                print(False)
+            if token == input:
                 open_04_face
             elif token != input:
                 open_03_tokenFaild
