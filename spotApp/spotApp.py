@@ -181,7 +181,7 @@ def main(page: ft.Page):
                                     selectable=False,
                                     font_family="BIZ UDPGothic"
                                 )
-                            ],horizontal_alignment=ft.CrossAxisAlignment.START),
+                            ],horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                             ft.Row([
                                 ft.Image(
                                     src=f"qr.png",
@@ -534,12 +534,68 @@ def main(page: ft.Page):
                                             "ロックを解除",
                                             size=50,
                                             font_family="BIZ UDPGothic"
-                                        )
+                                        ),
+                                        on_click=open_08_unLockInfo
                                     )
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             width=1980,
                             height=960
+                        )
+                    ]
+                )
+            )
+
+        if page.route == "/08_unLockInfo":
+            page.views.clear()
+            page.views.append(
+                ft.View(
+                    "/08_unLockInfo",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "利用開始",
+                                        size=60,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    ),
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "チェーンを外して利用を始めましょう。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "自転車が離れたら待機画面になります。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src=f"unLockInfo",
+                                        width=600,
+                                        height=440,
+                                        fit=ft.ImageFit.CONTAIN
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=1000
                         )
                     ]
                 )
