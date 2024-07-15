@@ -26,6 +26,11 @@ project_id = os.environ.get('PROJECT_ID')
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
 #------
+#画像のナンバリング管理関数
+#------
+imNum = 0
+
+#------
 #画面出力
 #------
 def main(page: ft.Page):
@@ -415,10 +420,13 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            imNum += 1
             time.sleep(1)
             if camera.main():
+                os.rename(src="./assets/result.jpg", dst="./assets/result"+str(imNum)+".jpg")
                 open_07_unLock(e)
             else:
+                os.rename(src="./assets/result.jpg", dst="./assets/result"+str(imNum)+".jpg")
                 open_06_faceFaild(e)
 
         if page.route == "/06_faceFaild":
@@ -451,7 +459,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result.jpg",
+                                        src=f"result"+str(imNum)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
@@ -474,7 +482,6 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            os.remove('./assets/result.jpg')
 
         if page.route == "/07_unLock":
             page.views.append(
@@ -507,7 +514,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result.jpg",
+                                        src=f"result"+str(imNum)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
