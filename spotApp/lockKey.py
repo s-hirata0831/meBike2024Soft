@@ -7,7 +7,7 @@ from pygame import mixer
 #登録済みタグ のIDm
 Register_IDm = "012e48c23c8a414b"
 
- # 待ち受けの1サイクル秒
+# 待ち受けの1サイクル秒
 TIME_cycle = 10.0
 # 待ち受けの反応インターバル秒
 TIME_interval = 0.2
