@@ -588,8 +588,8 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Image(
                                         src=f"unLockInfo.png",
-                                        width=600,
-                                        height=440,
+                                        width=700,
+                                        height=540,
                                         fit=ft.ImageFit.CONTAIN
                                     )
                                 ],alignment=ft.MainAxisAlignment.CENTER)
