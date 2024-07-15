@@ -262,15 +262,14 @@ def main(page: ft.Page):
             input = city_ref.get(field_paths=inputPath).to_dict()
             print(token)
             print(input)
-            open_03_tokenFaild
             if token == input:
                 print(True)
             elif token != input:
                 print(False)
             if token == input:
-                open_04_face
+                open_04_face()
             elif token != input:
-                open_03_tokenFaild
+                open_03_tokenFaild()
 
         if page.route == "/03_tokenFaild":
             page.views.append(
