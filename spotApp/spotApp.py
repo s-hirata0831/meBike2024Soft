@@ -270,9 +270,8 @@ def main(page: ft.Page):
             inputPath = ['inputToken']
             token = city_ref.get(field_paths=tokenPath).to_dict()
             input = city_ref.get(field_paths=inputPath).to_dict()
-            char=":"
-            token_s = extract_after_char(token, char)
-            input_s = extract_after_char(input, char)
+            token_s = token["token_f"]
+            input_s = input["inputToken"]
             if token_s == input_s:
                 print("照合成功")
                 open_04_face(e)
