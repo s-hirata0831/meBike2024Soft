@@ -474,6 +474,7 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            os.remove('./assets/result.jpg')
 
         if page.route == "/07_unLock":
             page.views.append(
