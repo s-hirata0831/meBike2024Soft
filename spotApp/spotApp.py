@@ -420,7 +420,6 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            imNum += 1
             time.sleep(1)
             if camera.main():
                 os.rename(src="./assets/result.jpg", dst="./assets/result"+str(imNum)+".jpg")
@@ -430,6 +429,7 @@ def main(page: ft.Page):
                 open_06_faceFaild(e)
 
         if page.route == "/06_faceFaild":
+            imNum += 1
             page.views.append(
                 ft.View(
                     "/06_faceFaild",
@@ -459,7 +459,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result"+str(imNum)+".jpg",
+                                        src=f"result"+str(imNum - 1)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
@@ -484,6 +484,7 @@ def main(page: ft.Page):
             )
 
         if page.route == "/07_unLock":
+            imNum += 1
             page.views.append(
                 ft.View(
                     "/07_unLock",
@@ -514,7 +515,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result"+str(imNum)+".jpg",
+                                        src=f"result"+str(imNum - 1)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
