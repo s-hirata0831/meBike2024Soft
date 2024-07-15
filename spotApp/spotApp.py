@@ -430,6 +430,7 @@ def main(page: ft.Page):
 
         if page.route == "/06_faceFaild":
             imNum += 1
+            page.views.clear()
             page.views.append(
                 ft.View(
                     "/06_faceFaild",
@@ -485,6 +486,7 @@ def main(page: ft.Page):
 
         if page.route == "/07_unLock":
             imNum += 1
+            page.views.clear()
             page.views.append(
                 ft.View(
                     "/07_unLock",
