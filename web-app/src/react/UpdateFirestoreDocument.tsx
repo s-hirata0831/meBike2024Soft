@@ -16,7 +16,7 @@ const UpdateFirestoreDocument: React.FC = () => {
   const handleUpdate = async () => {
     const numericValue = parseFloat(inputText);
     if (isNaN(numericValue) || !Number.isInteger(numericValue)) {
-      setError('入力された値は整数ではありません。');
+      setError('入力された値は数字ではありません。');
       return;
     }
     setError('');
@@ -37,7 +37,7 @@ const UpdateFirestoreDocument: React.FC = () => {
   return (
     <div>
       <select value={selectedDocumentId} onChange={(e) => setSelectedDocumentId(e.target.value)}>
-        <option value="">Select a document</option>
+        <option value="">場所を選択</option>
         {documentOptions.map((option) => (
           <option key={option.id} value={option.id}>{option.name}</option>
         ))}
@@ -49,7 +49,7 @@ const UpdateFirestoreDocument: React.FC = () => {
         onChange={(e) => setInputText(e.target.value)}
         placeholder="ワンタイムコードを入力"
       />
-      <button onClick={handleUpdate} disabled={!selectedDocumentId || !inputText}>Update Document</button>
+      <button onClick={handleUpdate} disabled={!selectedDocumentId || !inputText}>送信</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );

@@ -31,7 +31,7 @@ const BluetoothComponent: React.FC = () => {
     return (
         <div>
             <button onClick={handleConnect} disabled={isConnecting}>
-                {isConnecting ? 'Connecting...' : 'Connect to Bluetooth Device'}
+                {isConnecting ? '接続中...' : 'Me-BikeをBluetooth接続'}
             </button>
         </div>
     );

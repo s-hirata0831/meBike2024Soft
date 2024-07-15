@@ -7,7 +7,7 @@ const Map: React.FC = () => {
   return (
     <div>      
       <h1>Map</h1>
-      <button onClick={() => navigate('/')}>トップに戻る</button>
+      <button onClick={() => navigate('/')}>トップページに戻る</button>
     </div>
   );
 };
