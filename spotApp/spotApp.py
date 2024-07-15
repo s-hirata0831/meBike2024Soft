@@ -24,6 +24,16 @@ project_id = os.environ.get('PROJECT_ID')
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
 #------
+#トークン抽出関数
+#------
+def extract_after_char(text, char):
+    index = text.find(char)
+    if index != -1:
+        return text[index + 1:]
+    else:
+        return ''
+
+#------
 #画面出力
 #------
 def main(page: ft.Page):
@@ -260,15 +270,14 @@ def main(page: ft.Page):
             inputPath = ['inputToken']
             token = city_ref.get(field_paths=tokenPath).to_dict()
             input = city_ref.get(field_paths=inputPath).to_dict()
-            print(token)
-            print(input)
-            if token == input:
-                print(True)
-            elif token != input:
-                print(False)
-            if token == input:
+            char=":"
+            token_s = extract_after_char(token, char)
+            input_s = extract_after_char(input, char)
+            if token_s == input_s:
+                print("照合成功")
                 open_04_face(e)
-            elif token != input:
+            elif token_s != input_s:
+                print("照合失敗")
                 open_03_tokenFaild(e)
 
         if page.route == "/03_tokenFaild":
@@ -296,7 +305,7 @@ def main(page: ft.Page):
                                             size=50,
                                             font_family="BIZ UDPGothic"
                                         ),
-                                        on_click=open_02_tokenCheck
+                                        on_click=open_01_token
                                     )
                                 ],alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
