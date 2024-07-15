@@ -418,9 +418,11 @@ def main(page: ft.Page):
             time.sleep(1)
             if camera.main():
                 imNow=camera.now
+                print("取得時: "+imNow)
                 open_07_unLock(e)
             else:
                 imNow=camera.now
+                print("取得時: "+imNow)
                 open_06_faceFaild(e)
 
         if page.route == "/06_faceFaild":
