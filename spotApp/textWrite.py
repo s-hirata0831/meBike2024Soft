@@ -1,7 +1,7 @@
 import time
 
 while True:
-    f = open('spotApp/lockState.txt', 'w')
+    f = open('lockState.txt', 'w')
 
     f.write('0')
 
@@ -9,7 +9,7 @@ while True:
 
     time.sleep(3)
 
-    f = open('spotApp/lockState.txt', 'w')
+    f = open('lockState.txt', 'w')
 
     f.write('1')
 
