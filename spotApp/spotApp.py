@@ -24,16 +24,6 @@ project_id = os.environ.get('PROJECT_ID')
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
 #------
-#トークン抽出関数
-#------
-def extract_after_char(text, char):
-    index = text.find(char)
-    if index != -1:
-        return text[index + 1:]
-    else:
-        return ''
-
-#------
 #画面出力
 #------
 def main(page: ft.Page):
