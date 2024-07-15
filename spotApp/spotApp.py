@@ -310,7 +310,7 @@ def main(page: ft.Page):
         if page.route == "/04_face":
             page.views.append(
                 ft.View(
-                    "/04_tokenFaild",
+                    "/04_face",
                     [
                         page.appbar,
                         ft.Row(
