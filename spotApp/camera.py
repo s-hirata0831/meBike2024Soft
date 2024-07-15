@@ -1,4 +1,5 @@
 import cv2
+import datetime
 
 def main():
     # ウェブカメラを起動
@@ -40,7 +41,8 @@ def main():
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 4)
 
     # 結果を出力
-    output_path = "./assets/result.jpg"
+    now = datetime.datetime.now()
+    output_path = "./assets/"+str(now)+".jpg"
     cv2.imwrite(output_path, img)
     print(f"Result saved as '{output_path}'")
 

@@ -67,11 +67,6 @@ def main(page: ft.Page):
     def route_change(e):
         #ページのクリア
         page.views.clear()
-
-        #------
-        #画像のナンバリング管理関数
-        #------
-        imNum = 0
         
         #トップページ
         page.views.append(
@@ -422,14 +417,13 @@ def main(page: ft.Page):
             )
             time.sleep(1)
             if camera.main():
-                os.rename(src="./assets/result.jpg", dst="./assets/result"+str(imNum)+".jpg")
+                imNow=camera.now
                 open_07_unLock(e)
             else:
-                os.rename(src="./assets/result.jpg", dst="./assets/result"+str(imNum)+".jpg")
+                imNow=camera.now
                 open_06_faceFaild(e)
 
         if page.route == "/06_faceFaild":
-            imNum += 1
             page.views.clear()
             page.views.append(
                 ft.View(
@@ -460,7 +454,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result"+str(imNum - 1)+".jpg",
+                                        src=str(imNow)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
@@ -485,7 +479,6 @@ def main(page: ft.Page):
             )
 
         if page.route == "/07_unLock":
-            imNum += 1
             page.views.clear()
             page.views.append(
                 ft.View(
@@ -517,7 +510,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"result"+str(imNum - 1)+".jpg",
+                                        src=str(imNow)+".jpg",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
