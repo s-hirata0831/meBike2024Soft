@@ -558,7 +558,7 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Text(
                                         "利用開始",
-                                        size=60,
+                                        size=70,
                                         weight=ft.FontWeight.W_900,
                                         color=ft.colors.BLACK,
                                         selectable=False,
