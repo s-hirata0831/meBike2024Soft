@@ -546,11 +546,11 @@ def main(page: ft.Page):
                 )
             )
 
-        if page.route == "/08_unLockInfo":
+        if page.route == "/09_sleep":
             page.views.clear()
             page.views.append(
                 ft.View(
-                    "/08_unLockInfo",
+                    "/09_sleep",
                     [
                         page.appbar,
                         ft.Container(
@@ -577,7 +577,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Text(
-                                        "自転車が離れたら待機画面になります。",
+                                        "次へボタンを押して待機画面に移ります。",
                                         size=50,
                                         weight=ft.FontWeight.W_900,
                                         color=ft.colors.BLACK,
@@ -592,7 +592,84 @@ def main(page: ft.Page):
                                         height=540,
                                         fit=ft.ImageFit.CONTAIN
                                     )
-                                ],alignment=ft.MainAxisAlignment.CENTER)
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "待機画面へ",
+                                            size=50,
+                                            font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_09_sleep
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=1000
+                        )
+                    ]
+                )
+            )
+            f = open('lockState.txt', 'w')
+            f.write('1')
+            f.close()
+
+        if page.route == "/09_sleep":
+            page.views.append(
+                ft.View(
+                    "/09_sleep",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "ME-Bike 舞鶴高専ステーション",
+                                        size=120,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    ),
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "現在利用中",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src=f"ME-Bike.jpg",
+                                        width=500,
+                                        height=500,
+                                        fit=ft.ImageFit.CONTAIN
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "返却は、返却ボタンをタップ。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "返却",
+                                            size=60,
+                                            font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_10_back
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             width=1980,
                             height=1000
@@ -651,6 +728,14 @@ def main(page: ft.Page):
     #08_unLockInfoへ移動
     def open_08_unLockInfo(e):
         page.go("/08_unLockInfo")
+
+    #09_sleepへ移動
+    def open_09_sleep(e):
+        page.go("/09_sleep")
+
+    #10_backへ移動
+    def open_10_back(e):
+        page.go("/10_back")
 
     #------
     #イベントの登録
