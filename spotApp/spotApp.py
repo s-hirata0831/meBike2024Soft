@@ -333,7 +333,7 @@ def main(page: ft.Page):
                                         selectable=False,
                                         font_family="BIZ UDPGothic"
                                     ),
-                                ],alignment=ft.MainAxisAlignment.START),
+                                ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Text(
                                         "準備ができたら撮影ボタンを押してカメラを見てください。",
@@ -347,8 +347,8 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Image(
                                         src=f"cam.png",
-                                        width=500,
-                                        height=500,
+                                        width=400,
+                                        height=400,
                                         fit=ft.ImageFit.CONTAIN
                                     )
                                 ],alignment=ft.MainAxisAlignment.CENTER),
