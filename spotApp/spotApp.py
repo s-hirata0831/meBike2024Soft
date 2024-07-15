@@ -3,6 +3,7 @@ import datetime
 import random as rnd
 import os
 import camera
+import time
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
@@ -359,6 +360,166 @@ def main(page: ft.Page):
                                             "撮影",
                                             size=50,
                                             font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_05_faceCheck
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=960
+                        )
+                    ]
+                )
+            )
+
+        if page.route == "/05_faceCheck":
+            page.views.append(
+                ft.View(
+                    "/05_faceCheck",
+                    [
+                        page.appbar,
+                        ft.Row(
+                            [ft.ElevatedButton(
+                                content=ft.Text(
+                                    "back",
+                                    size=40,
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_04_face,
+                            )],
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "顔を撮影中...",
+                                        size=100,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ProgressRing(
+                                        width=75,
+                                        height=75
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ], alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            alignment=ft.alignment.bottom_center,
+                            width=1980,
+                            height=960
+                        )
+                    ]
+                )
+            )
+            time.sleep(1)
+            if camera.main():
+                open_07_unLock(e)
+            else:
+                open_06_faceFaild(e)
+
+        if page.route == "/06_faceFaild":
+            page.views.append(
+                ft.View(
+                    "/06_faceFaild",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "顔を検出できません",
+                                        size=100,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "再度撮影してください。",
+                                        size=75,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "戻る",
+                                            size=50,
+                                            font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_04_face
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=1000
+                        )
+                    ]
+                )
+            )
+
+        if page.route == "/07_unLock":
+            page.views.append(
+                ft.View(
+                    "/07_unLock",
+                    [
+                        page.appbar,
+                        ft.Row(
+                            [ft.ElevatedButton(
+                                content=ft.Text(
+                                    "back",
+                                    size=40,
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_04_face,
+                            )],
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "あなたの顔を記録しました。",
+                                        size=60,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    ),
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src=f"result.jpg",
+                                        width=600,
+                                        height=440,
+                                        fit=ft.ImageFit.CONTAIN
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Text(
+                                        "自転車のロックを解除します。",
+                                        size=50,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "ロックを解除",
+                                            size=50,
+                                            font_family="BIZ UDPGothic"
                                         )
                                     )
                                 ], alignment=ft.MainAxisAlignment.CENTER)
@@ -369,7 +530,6 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            camera.main()
         
         #ページ更新
         page.update()
@@ -405,6 +565,18 @@ def main(page: ft.Page):
     #04_faceへ移動
     def open_04_face(e):
         page.go("/04_face")
+
+    #05_faceCheckへ移動
+    def open_05_faceCheck(e):
+        page.go("/05_faceCheck")
+
+    #06_faceFaildへ移動
+    def open_06_faceFaild(e):
+        page.go("/06_faceFaild")
+
+    #07_unLockへ移動
+    def open_07_unLock(e):
+        page.go("/07_unLock")
 
     #------
     #イベントの登録
