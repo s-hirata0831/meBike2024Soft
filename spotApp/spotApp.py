@@ -432,7 +432,7 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Text(
                                         "顔を検出できません",
-                                        size=100,
+                                        size=85,
                                         weight=ft.FontWeight.W_900,
                                         color=ft.colors.BLACK,
                                         selectable=False,
@@ -447,6 +447,14 @@ def main(page: ft.Page):
                                         color=ft.colors.BLACK,
                                         selectable=False,
                                         font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src=f"result.jpg",
+                                        width=600,
+                                        height=440,
+                                        fit=ft.ImageFit.CONTAIN
                                     )
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
