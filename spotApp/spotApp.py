@@ -256,8 +256,8 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            token = city_ref.get.to_dict().get('token_f')
-            input = city_ref.get.to_dict().get('inputToken')
+            token = city_ref.get('token_f').to_dict()
+            input = city_ref.get('inputToken').to_dict()
             print(token)
             print(input)
             if token == input:
