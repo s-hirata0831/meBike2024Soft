@@ -181,7 +181,7 @@ def main(page: ft.Page):
                                     selectable=False,
                                     font_family="BIZ UDPGothic"
                                 )
-                            ],horizontal_alignment=ft.CrossAxisAlignment.CENTER),
+                            ],horizontal_alignment=ft.CrossAxisAlignment.START),
                             ft.Row([
                                 ft.Image(
                                     src=f"qr.png",
@@ -587,7 +587,7 @@ def main(page: ft.Page):
                                 ],alignment=ft.MainAxisAlignment.CENTER),
                                 ft.Row([
                                     ft.Image(
-                                        src=f"unLockInfo",
+                                        src=f"unLockInfo.png",
                                         width=600,
                                         height=440,
                                         fit=ft.ImageFit.CONTAIN
