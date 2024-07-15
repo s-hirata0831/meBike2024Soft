@@ -26,11 +26,6 @@ project_id = os.environ.get('PROJECT_ID')
 city_ref = db.collection("token").document("nitMaizuruCollege")
 
 #------
-#画像のナンバリング管理関数
-#------
-imNum = 0
-
-#------
 #画面出力
 #------
 def main(page: ft.Page):
@@ -72,6 +67,11 @@ def main(page: ft.Page):
     def route_change(e):
         #ページのクリア
         page.views.clear()
+
+        #------
+        #画像のナンバリング管理関数
+        #------
+        imNum = 0
         
         #トップページ
         page.views.append(
