@@ -256,14 +256,87 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            while True:
-                #入力されたトークンを取得
-                token = city_ref.get.to_dict().get('token_f')
-                input = city_ref.get.to_dict().get('inputToken')
-                print(token)
-                print(input)
-                if token == input:
-                    open_00_top
+            token = city_ref.get.to_dict().get('token_f')
+            input = city_ref.get.to_dict().get('inputToken')
+            print(token)
+            print(input)
+            if token == input:
+                open_04_face
+            else:
+                open_03_tokenFaild
+
+        if page.route == "/03_tokenFaild":
+            page.views.append(
+                ft.View(
+                    "/03_tokenFaild",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "照合失敗、再度照合してください。",
+                                        size=100,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.ElevatedButton(
+                                        content=ft.Text(
+                                            "戻る",
+                                            size=50,
+                                            font_family="BIZ UDPGothic"
+                                        ),
+                                        on_click=open_02_tokenCheck
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=1000
+                        )
+                    ]
+                )
+            )
+
+        if page.route == "/04_face":
+            page.views.append(
+                ft.View(
+                    "/04_tokenFaild",
+                    [
+                        page.appbar,
+                        ft.Row(
+                            [ft.ElevatedButton(
+                                content=ft.Text(
+                                    "back",
+                                    size=40,
+                                    font_family="BIZ UDPGothic"
+                                ),
+                                on_click=open_01_token,
+                            )],
+                            alignment=ft.MainAxisAlignment.END
+                        ),
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "顔を撮影します。",
+                                        size=100,
+                                        weight=ft.FontWeight.W_900,
+                                        color=ft.colors.BLACK,
+                                        selectable=False,
+                                        font_family="BIZ UDPGothic"
+                                    )
+                                ],alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=1980,
+                            height=960
+                        )
+                    ]
+                )
+            )
         
         #ページ更新
         page.update()
@@ -291,6 +364,14 @@ def main(page: ft.Page):
     #02_tokenCheckへ移動
     def open_02_tokenCheck(e):
         page.go("/02_tokenCheck")
+
+    #03_tokenFaildへ移動
+    def open_03_tokenFaild(e):
+        page.go("/03_tokenFaild")
+
+    #04_faceへ移動
+    def open_04_face(e):
+        page.go("/04_face")
 
     #------
     #イベントの登録
