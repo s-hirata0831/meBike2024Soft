@@ -161,7 +161,7 @@ class webViewController: UIViewController, WKNavigationDelegate{
     }
     
     func loadWebPage(){
-        if let url = URL(string: "https://karayab2024.web.app"){
+        if let url = URL(string: "https://me-bike-24.web.app"){
             let request = URLRequest(url: url)
             webView.load(request)
         }
