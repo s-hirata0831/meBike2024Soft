@@ -2,6 +2,7 @@ import flet as ft
 import datetime
 import random as rnd
 import os
+import camera
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
@@ -368,6 +369,7 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            camera.main()
         
         #ページ更新
         page.update()
