@@ -747,7 +747,7 @@ def main(page: ft.Page):
                                 ], alignment=ft.MainAxisAlignment.CENTER)
                             ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
                             width=1980,
-                            height=960
+                            height=920
                         )
                     ]
                 )
