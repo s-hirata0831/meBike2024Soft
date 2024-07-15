@@ -21,7 +21,7 @@ TIME_cycle = 0.1
 # 待ち受けの反応インターバル秒
 TIME_interval = 0.1
 
-music_play("start.py")
+music_play("start.mp3")
 print("bikeState.py is starting!")
 while True:
     #自転車の利用状態を参照
