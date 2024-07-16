@@ -7,7 +7,7 @@ import './Map.css';
 
 const currentIcon = new L.Icon({
   iconUrl: 'https://img.icons8.com/ios-filled/50/map-pin.png',
-  iconSize: [25, 25], // サイズを適宜変更
+  iconSize: [40, 40], // サイズを適宜変更
   iconAnchor: [12, 41], // アイコンのアンカー位置
   popupAnchor: [1, -34], // ポップアップのアンカー位置
   shadowSize: [41, 41], // シャドウのサイズ
@@ -15,7 +15,7 @@ const currentIcon = new L.Icon({
 
 const searchIcon = new L.Icon({
   iconUrl: 'https://img.icons8.com/nolan/64/map-pin.png',
-  iconSize: [25, 25], // サイズを適宜変更
+  iconSize: [40, 40], // サイズを適宜変更
   iconAnchor: [12, 41], // アイコンのアンカー位置
   popupAnchor: [1, -34], // ポップアップのアンカー位置
   shadowSize: [41, 41], // シャドウのサイズ
@@ -75,6 +75,14 @@ const SearchBox: React.FC<{ onSearch: (position: L.LatLng) => void }> = ({ onSea
 const MapComponent: React.FC = () => {
   const [searchPosition, setSearchPosition] = useState<L.LatLng | null>(null);
   const [route, setRoute] = useState<L.LatLng[]>([]);
+  const [mapCenter, setMapCenter] = useState<L.LatLng | null>(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) =>{
+      const {latitude, longitude} = position.coords;
+      setMapCenter(new L.LatLng(latitude, longitude));
+    });
+  }, []);
 
   const handleSearch = (position: L.LatLng) => {
     setSearchPosition(position);
@@ -103,13 +111,15 @@ const MapComponent: React.FC = () => {
   return (
     <div className="map-container">
       <SearchBox onSearch={handleSearch} />
-      <MapContainer center={[0, 0]} zoom={13} style={{ height: '100vh', width: '100%' }}>
+      {mapCenter && (
+      <MapContainer center={mapCenter} zoom={13} style={{ height: '100vh', width: '100%' }}>
         <TileLayer
           url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <MapWithNominatimSearch searchPosition={searchPosition} route={route} />
       </MapContainer>
+      )}  
     </div>
   );
 };
