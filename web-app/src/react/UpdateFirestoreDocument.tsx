@@ -58,7 +58,7 @@ const UpdateFirestoreDocument: React.FC = () => {
         type="password"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="ワンタイムコードを入力"
+        placeholder="認証番号"
         variant="outlined"
         fullWidth
         sx={{ marginBottom: 2 }}

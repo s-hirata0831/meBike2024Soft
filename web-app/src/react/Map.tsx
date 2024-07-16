@@ -5,41 +5,24 @@ import L from 'leaflet';
 import axios from 'axios';
 import './Map.css';
 
+// アイコンの定義
 const currentIcon = new L.Icon({
   iconUrl: 'https://img.icons8.com/ios-filled/50/map-pin.png',
-  iconSize: [40, 40], // サイズを適宜変更
-  iconAnchor: [12, 41], // アイコンのアンカー位置
-  popupAnchor: [1, -34], // ポップアップのアンカー位置
-  shadowSize: [41, 41], // シャドウのサイズ
+  iconSize: [40, 40],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
 });
 
 const searchIcon = new L.Icon({
   iconUrl: 'https://img.icons8.com/nolan/64/map-pin.png',
-  iconSize: [40, 40], // サイズを適宜変更
-  iconAnchor: [12, 41], // アイコンのアンカー位置
-  popupAnchor: [1, -34], // ポップアップのアンカー位置
-  shadowSize: [41, 41], // シャドウのサイズ
+  iconSize: [40, 40],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
 });
 
-const MapWithNominatimSearch: React.FC<{ searchPosition: L.LatLng | null, route: L.LatLng[] }> = ({ searchPosition, route }) => {
-  const [currentPosition, setCurrentPosition] = useState<L.LatLng | null>(null);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      setCurrentPosition(new L.LatLng(latitude, longitude));
-    });
-  }, []);
-
-  return (
-    <>
-      {currentPosition && <Marker position={currentPosition} icon={currentIcon} />}
-      {searchPosition && <Marker position={searchPosition} icon={searchIcon} />}
-      {route.length > 0 && <Polyline positions={route} color="blue" />}
-    </>
-  );
-};
-
+// 検索ボックスのコンポーネント
 const SearchBox: React.FC<{ onSearch: (position: L.LatLng) => void }> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
@@ -72,14 +55,15 @@ const SearchBox: React.FC<{ onSearch: (position: L.LatLng) => void }> = ({ onSea
   );
 };
 
+// マップコンポーネント
 const MapComponent: React.FC = () => {
   const [searchPosition, setSearchPosition] = useState<L.LatLng | null>(null);
   const [route, setRoute] = useState<L.LatLng[]>([]);
   const [mapCenter, setMapCenter] = useState<L.LatLng | null>(null);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) =>{
-      const {latitude, longitude} = position.coords;
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
       setMapCenter(new L.LatLng(latitude, longitude));
     });
   }, []);
@@ -94,7 +78,6 @@ const MapComponent: React.FC = () => {
 
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      new L.LatLng(latitude, longitude);
 
       const url = `http://router.project-osrm.org/route/v1/driving/${longitude},${latitude};${destination.lng},${destination.lat}?overview=full&geometries=geojson`;
       try {
@@ -112,16 +95,35 @@ const MapComponent: React.FC = () => {
     <div className="map-container">
       <SearchBox onSearch={handleSearch} />
       {mapCenter && (
-      <MapContainer center={mapCenter} zoom={13} style={{ height: '100vh', width: '100%' }}>
-        <TileLayer
-          url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <MapWithNominatimSearch searchPosition={searchPosition} route={route} />
-      </MapContainer>
-      )}  
+        <MapContainer center={mapCenter} zoom={13} style={{ height: '100vh', width: '100%' }}>
+          <TileLayer
+            url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MapWithNominatimSearch searchPosition={searchPosition} route={route} />
+        </MapContainer>
+      )}
     </div>
   );
 };
 
 export default MapComponent;
+
+const MapWithNominatimSearch: React.FC<{ searchPosition: L.LatLng | null, route: L.LatLng[] }> = ({ searchPosition, route }) => {
+  const [currentPosition, setCurrentPosition] = useState<L.LatLng | null>(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      setCurrentPosition(new L.LatLng(latitude, longitude));
+    });
+  }, []);
+
+  return (
+    <>
+      {currentPosition && <Marker position={currentPosition} icon={currentIcon} />}
+      {searchPosition && <Marker position={searchPosition} icon={searchIcon} />}
+      {route.length > 0 && <Polyline positions={route} color="blue" />}
+    </>
+  );
+};
