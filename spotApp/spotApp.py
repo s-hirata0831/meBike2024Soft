@@ -69,9 +69,6 @@ def main(page: ft.Page):
         #ページのクリア
         page.views.clear()
         Solenoid = 18
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(Solenoid, GPIO.OUT)
-        GPIO.output(Solenoid, False)
         
         #トップページ
         page.views.append(
@@ -138,6 +135,9 @@ def main(page: ft.Page):
                 ],
             )
         )
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(Solenoid, GPIO.OUT)
+        GPIO.output(Solenoid, False)
 
         #トークン入力画面
         if page.route == "/01_token":
