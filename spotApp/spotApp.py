@@ -68,6 +68,10 @@ def main(page: ft.Page):
     def route_change(e):
         #ページのクリア
         page.views.clear()
+        Solenoid = 18
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(Solenoid, GPIO.OUT)
+        GPIO.output(Solenoid, False)
         
         #トップページ
         page.views.append(
@@ -546,9 +550,6 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            Solenoid = 18
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(Solenoid, GPIO.OUT)
             GPIO.output(Solenoid, True)
             print("ロックを解錠します")
 
