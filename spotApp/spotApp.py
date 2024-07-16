@@ -621,6 +621,7 @@ def main(page: ft.Page):
             f = open('lockState.txt', 'w')
             f.write('1')
             f.close()
+            time.sleep(1)
             GPIO.output(Solenoid, False)
 
         if page.route == "/09_sleep":
