@@ -546,8 +546,14 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            Solenoid = 18
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(Solenoid, GPIO.OUT)
+            GPIO.output(Solenoid, True)
+            print("ロックを解錠します")
 
         if page.route == "/08_unLockInfo":
+            GPIO.output(Solenoid, False)
             page.views.clear()
             page.views.append(
                 ft.View(
@@ -614,11 +620,6 @@ def main(page: ft.Page):
             f = open('lockState.txt', 'w')
             f.write('1')
             f.close()
-            Solenoid = 18
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(Solenoid, GPIO.OUT)
-            GPIO.output(Solenoid, True)
-            print("ロックを解錠します")
 
         if page.route == "/09_sleep":
             page.views.append(
