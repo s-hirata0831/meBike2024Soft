@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, Button, CircularProgress } from '@mui/material';
 
 const BluetoothComponent: React.FC = () => {
     const [isConnecting, setIsConnecting] = useState<boolean>(false);
@@ -29,11 +30,17 @@ const BluetoothComponent: React.FC = () => {
     };
 
     return (
-        <div>
-            <button onClick={handleConnect} disabled={isConnecting}>
+        <Box display="flex" flexDirection="column" alignItems="center">
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={handleConnect}
+                disabled={isConnecting}
+                startIcon={isConnecting ? <CircularProgress size={24} /> : null}
+            >
                 {isConnecting ? '接続中...' : 'Me-BikeをBluetooth接続'}
-            </button>
-        </div>
+            </Button>
+        </Box>
     );
 };
 

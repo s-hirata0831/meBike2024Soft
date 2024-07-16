@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
-import db from '../firebase'; // firebase.tsからFirestoreインスタンスをインポート
+import db from '../firebase';
+import { Box, Button, MenuItem, Select, TextField, Typography } from '@mui/material';
 
 const UpdateFirestoreDocument: React.FC = () => {
   const [inputText, setInputText] = useState('');
   const [selectedDocumentId, setSelectedDocumentId] = useState('');
   const [error, setError] = useState('');
 
-  // ドキュメントIDと表示名のマッピングリスト
   const documentOptions = [
     { id: 'higashiMaizuruSta', name: '東舞鶴駅' },
     { id: 'nitMaizuruCollege', name: '舞鶴高専' },
@@ -21,9 +21,9 @@ const UpdateFirestoreDocument: React.FC = () => {
     }
     setError('');
     try {
-      const docRef = doc(db, 'token', selectedDocumentId); // 選択されたドキュメントIDを使用
+      const docRef = doc(db, 'token', selectedDocumentId);
       await updateDoc(docRef, {
-        inputToken: numericValue, // 入力値を数値に変換して保存
+        inputToken: numericValue,
         timestamp: serverTimestamp()
       });
       console.log('Document updated successfully');
@@ -35,23 +35,48 @@ const UpdateFirestoreDocument: React.FC = () => {
   };
 
   return (
-    <div>
-      <select value={selectedDocumentId} onChange={(e) => setSelectedDocumentId(e.target.value)}>
-        <option value="">場所を選択</option>
+    <Box display="flex" flexDirection="column" alignItems="center" p={2}>
+      <Select
+        value={selectedDocumentId}
+        onChange={(e) => setSelectedDocumentId(e.target.value)}
+        displayEmpty
+        variant="outlined"
+        fullWidth
+        sx={{ marginBottom: 2 }}
+      >
+        <MenuItem value="">
+          <em>場所を選択</em>
+        </MenuItem>
         {documentOptions.map((option) => (
-          <option key={option.id} value={option.id}>{option.name}</option>
+          <MenuItem key={option.id} value={option.id}>
+            {option.name}
+          </MenuItem>
         ))}
-      </select>
-      <br />
-      <input
-        type="text"
+      </Select>
+
+      <TextField
+        type="password"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="ワンタイムコードを入力"
+        variant="outlined"
+        fullWidth
+        sx={{ marginBottom: 2 }}
       />
-      <button onClick={handleUpdate} disabled={!selectedDocumentId || !inputText}>送信</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </div>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleUpdate}
+        disabled={!selectedDocumentId || !inputText}
+        fullWidth
+        sx={{ marginBottom: 2 }}
+      >
+        送信
+      </Button>
+
+      {error && <Typography color="error">{error}</Typography>}
+    </Box>
   );
 };
 

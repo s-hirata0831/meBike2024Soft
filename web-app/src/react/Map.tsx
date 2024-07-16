@@ -1,16 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Box, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import './NotFound.css';
 
-const Map: React.FC = () => {
-  const navigate = useNavigate();
-
+const NotFound: React.FC = () => {
   return (
-    <div>      
-      <h1>Map</h1>
-      <button onClick={() => navigate('/')}>トップページに戻る</button>
-    </div>
+    <Box className="not-found-container">
+      <Typography variant="h1" className="not-found-title">Map</Typography>
+      <Button variant="contained" color="primary" component={Link} to="/">
+        ホームに戻る
+      </Button>
+    </Box>
   );
 };
 
-export default Map;
-
+export default NotFound;

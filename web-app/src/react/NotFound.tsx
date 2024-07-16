@@ -1,11 +1,18 @@
+// src/react/NotFound.tsx
 import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import './NotFound.css';
 
 const NotFound: React.FC = () => {
   return (
-    <div>
-      <h1>ページが見つかりません</h1>
-      <p>お探しのページは存在しないか、移動された可能性があります。</p>
-    </div>
+    <Box className="not-found-container">
+      <Typography variant="h1" className="not-found-title">404</Typography>
+      <Typography variant="h6" className="not-found-subtitle">ページが見つかりません</Typography>
+      <Button variant="contained" color="primary" component={Link} to="/">
+        ホームに戻る
+      </Button>
+    </Box>
   );
 };
 
