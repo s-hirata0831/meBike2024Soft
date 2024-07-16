@@ -160,8 +160,7 @@ class webViewController: UIViewController, WKNavigationDelegate{
         loadWebPage()
     }
     
-    func loadWebPage(){
-        if let url = URL(string: "https://me-bike-24.web.app"){
+    func loadWebPage(){        if let url = URL(string: "https://me-bike-24.web.app"){
             let request = URLRequest(url: url)
             webView.load(request)
         }
@@ -294,6 +293,36 @@ class HalfModalViewController: UIViewController {
        NSLayoutConstraint.activate([
            titleL.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
            titleL.topAnchor.constraint(equalTo: view.topAnchor, constant: 42)
+       ])
+       
+      //自転車アイコン
+       let bike = UIImageView()
+       bike.image = UIImage(named: "bike.png")
+       bike.contentMode = .scaleAspectFit
+       bike.translatesAutoresizingMaskIntoConstraints = false
+       
+       //自転車名表示
+       let bikeName = UILabel()
+       bikeName.text = "電動自転車01"
+       bikeName.textColor = .white // テキストカラーを白に設定
+       bikeName.textAlignment = .left
+       bikeName.translatesAutoresizingMaskIntoConstraints = false
+       
+       // スタックビューを作成して、画像とラベルを追加
+       let stackView = UIStackView(arrangedSubviews: [bike, bikeName])
+       stackView.axis = .horizontal
+       stackView.alignment = .center
+       stackView.spacing = 10
+       stackView.translatesAutoresizingMaskIntoConstraints = false
+       
+       view.addSubview(stackView)
+       
+       // スタックビューの制約を設定
+       NSLayoutConstraint.activate([
+           stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+           stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+           bike.widthAnchor.constraint(equalToConstant: 50),  // 画像の幅を設定
+           bike.heightAnchor.constraint(equalToConstant: 50)  // 画像の高さを設定
        ])
     }
 }
