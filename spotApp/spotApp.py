@@ -4,6 +4,7 @@ import random as rnd
 import os
 import camera
 import time
+import RPi.GPIO as GPIO
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
@@ -545,6 +546,11 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            Solenoid = 18
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(Solenoid, GPIO.OUT)
+            GPIO.output(Solenoid, True)
+            print("ロックを解錠します")
 
         if page.route == "/08_unLockInfo":
             page.views.clear()
