@@ -305,6 +305,7 @@ class HalfModalViewController: UIViewController {
        let bikeName = UILabel()
        bikeName.text = "電動自転車01"
        bikeName.textColor = .white // テキストカラーを白に設定
+       bikeName.font = UIFont.systemFont(ofSize: 20)
        bikeName.textAlignment = .left
        bikeName.translatesAutoresizingMaskIntoConstraints = false
        
@@ -321,7 +322,7 @@ class HalfModalViewController: UIViewController {
        NSLayoutConstraint.activate([
            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-           bike.widthAnchor.constraint(equalToConstant: 50),  // 画像の幅を設定
+           bike.widthAnchor.constraint(equalToConstant: 100),  // 画像の幅を設定
            bike.heightAnchor.constraint(equalToConstant: 50)  // 画像の高さを設定
        ])
     }
