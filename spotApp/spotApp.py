@@ -553,6 +553,8 @@ def main(page: ft.Page):
 
         if page.route == "/08_unLockInfo":
             GPIO.output(Solenoid, False)
+            #自転車貸出中
+            city_ref.update({"keyState": True})
             page.views.clear()
             page.views.append(
                 ft.View(
@@ -763,6 +765,7 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            city_ref.update({"keyState": False})#自転車貸出終了
         
         #ページ更新
         page.update()
