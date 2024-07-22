@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import db from '../firebase';
 import { Box, Button, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { useDocumentContext } from '../context/DocumentContext';
 
 const UpdateFirestoreDocument: React.FC = () => {
   const [inputText, setInputText] = useState('');
-  const [selectedDocumentId, setSelectedDocumentId] = useState('');
   const [error, setError] = useState('');
+  const { selectedDocumentId, setSelectedDocumentId } = useDocumentContext();
 
   const documentOptions = [
     { id: 'higashiMaizuruSta', name: '東舞鶴駅' },
@@ -14,9 +15,10 @@ const UpdateFirestoreDocument: React.FC = () => {
   ];
 
   const handleUpdate = async () => {
-    const numericValue = parseFloat(inputText);
-    if (isNaN(numericValue) || !Number.isInteger(numericValue)) {
-      setError('入力された値は数字ではありません。');
+    // 入力値が整数かどうかをチェック
+    const numericValue = parseInt(inputText, 10);
+    if (isNaN(numericValue) || numericValue.toString() !== inputText) {
+      setError('入力された値は整数ではありません。');
       return;
     }
     setError('');
@@ -28,7 +30,7 @@ const UpdateFirestoreDocument: React.FC = () => {
       });
       console.log('Document updated successfully');
       setInputText('');
-      setSelectedDocumentId('');
+      // setSelectedDocumentId(''); // この行を削除またはコメントアウトして選択肢をリセットしない
     } catch (error) {
       console.error('Error updating document: ', error);
     }
@@ -55,7 +57,7 @@ const UpdateFirestoreDocument: React.FC = () => {
       </Select>
 
       <TextField
-        type="password"
+        type="text" // 認証番号が整数であることを考慮して、type="text"に変更
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="認証番号"

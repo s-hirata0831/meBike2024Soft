@@ -1,4 +1,3 @@
-// src/react/CustomButton.tsx
 import React from 'react';
 import { Button, ButtonProps, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -15,15 +14,16 @@ const CustomButton: React.FC<CustomButtonProps> = ({ icon, text, to, ...props })
       {...props}
       component={to ? Link : 'button'}
       to={to}
-      style={{ 
+      sx={{ 
         flexDirection: 'column', 
-        padding: '16px', 
+        padding: 2, 
         width: '100%', 
-        maxWidth: '150px' 
+        maxWidth: 150,
+        textAlign: 'center' // アイコンとテキストのセンタリング
       }}
     >
-      {React.cloneElement(icon, { fontSize: 'large', style: { fontSize: 48 } })}
-      <Typography variant="h6" style={{ marginTop: 8 }}>
+      {React.cloneElement(icon, { fontSize: 'large', sx: { fontSize: 48 } })}
+      <Typography variant="h6" sx={{ marginTop: 1 }}>
         {text}
       </Typography>
     </Button>

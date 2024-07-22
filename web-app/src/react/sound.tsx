@@ -1,9 +1,9 @@
 import React from 'react';
 import useSound from 'use-sound';
-import Sound from '..sounds/Sunny.wav';
+import Sound from '../sounds/Sunny.wav'; // 正しいパスに修正
 
-const sound : React.FC = () =>{
-    const [play, { stop, pause }] = useSound(Sound);
+const SoundPlayer: React.FC = () => {
+  const [play, { stop, pause }] = useSound(Sound);
 
   return (
     <div>
@@ -11,7 +11,7 @@ const sound : React.FC = () =>{
       <button onClick={() => stop()}>Stop</button>
       <button onClick={() => pause()}>Pause</button>
     </div>
-  )
-}
+  );
+};
 
-export default sound
+export default SoundPlayer;

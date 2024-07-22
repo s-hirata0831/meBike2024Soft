@@ -1,19 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BluetoothComponent from './BluetoothComponent';
 import UpdateFirestoreDocument from './UpdateFirestoreDocument';
 import CustomButton from './CustomButton';
-import { Box, Card, CardContent } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import logo from '../images/logo.png';
 import './Top.css';
+import FirestoreData from './FirestoreData';
+import { useKeyStateContext } from '../context/KeyStateContext';
+import { useDocumentContext } from '../context/DocumentContext'; // 追加
 
 const Top: React.FC = () => {
-  const [locked, setLocked] = useState(true); // 初期値をtrueに設定して施錠中とします
+  const { keyState } = useKeyStateContext();
+  const { selectedDocumentId } = useDocumentContext(); // useDocumentContext を使用
+  const [locked, setLocked] = useState<boolean | null>(null);
 
-  const toggleLock = () => {
-    setLocked(!locked);
+  useEffect(() => {
+    if (!selectedDocumentId) {
+      // selectedDocumentId が空の場合、locked を null にリセット
+      setLocked(null);
+    } else {
+      setLocked(keyState);
+    }
+  }, [selectedDocumentId, keyState]);
+
+  const getCardContent = () => {
+    if (locked === null) {
+      return (
+        <Typography variant="h6" className="centered-text">
+          <div>場所を選択</div>
+          <div>してください</div>
+        </Typography>
+      );
+    } else {
+      return (
+        <>
+          {locked ? <LockOpenIcon style={{ fontSize: 48, color: 'white' }} /> : <LockIcon style={{ fontSize: 48, color: 'white' }} />}
+          <Typography variant="h6" style={{ marginTop: 8, color: 'white' }}>
+            {locked ? "解錠中" : "施錠中"}
+          </Typography>
+        </>
+      );
+    }
   };
 
   return (
@@ -30,42 +60,35 @@ const Top: React.FC = () => {
       <Box className="split-container">
         <Card className="card">
           <CardContent className="card-content">
-          <CustomButton
-            variant="contained"
-            color="primary"
-            icon={<NavigationIcon />}
-            text="ナビゲーション"
-            to="/map"
-          />
-        </CardContent>
+            <CustomButton
+              variant="contained"
+              color="primary"
+              icon={<NavigationIcon />}
+              text="道案内"
+              to="/map"
+            />
+          </CardContent>
         </Card>
       </Box>
       
       <Box className="split-container">
         <Card className="card half-width">
           <CardContent className="card-content">
-            <UpdateFirestoreDocument /> {/* ワンタイムコードの代わりとして配置 */}
+            <UpdateFirestoreDocument />
           </CardContent>
         </Card>
 
-        <Card className="card half-width">
+        <Card
+          className="card half-width"
+          style={{ backgroundColor: locked === null ? '#9e9e9e' : (locked ? '#2196f3' : '#f44336') }}
+        >
           <CardContent className="card-content">
-            <CustomButton
-              variant="contained"
-              color={locked ? "error" : "info"} // 施錠中の場合はerror色（赤に近い色）、解錠中の場合はinfo色（青に近い色）
-              icon={locked ? <LockIcon /> : <LockOpenIcon />} // 状態に応じてアイコンを変更
-              text={locked ? "施錠中" : "解錠中"} // 状態に応じてテキストを変更
-              onClick={toggleLock}
-              fullWidth
-            />
+            {getCardContent()}
           </CardContent>
         </Card>
-        
       </Box>
 
-      
-
-      
+      <FirestoreData />
     </Box>
   );
 };
