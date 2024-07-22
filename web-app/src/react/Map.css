@@ -35,3 +35,10 @@
 .search-box button:hover {
   background-color: #0056b3;
 }
+
+.popup-content img {
+  width: 150px; /* 必要に応じてサイズ調整 */
+  height: auto; /* 高さ自動調整 */
+  border-radius: 5px;
+  object-fit: cover;
+}
