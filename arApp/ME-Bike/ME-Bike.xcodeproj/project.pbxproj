@@ -16,13 +16,14 @@
 		8B8D9AE12C059644005FF203 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8D9AE02C059644005FF203 /* ARKit.framework */; };
 		8B8D9AE32C059785005FF203 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8D9AE22C059785005FF203 /* art.scnassets */; };
 		8B8D9AE52C05AE79005FF203 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8D9AE42C05AE79005FF203 /* Image.xcassets */; };
+		8BA1412D2C46176B0053D245 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1412C2C46176B0053D245 /* bike.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B8D9AC82C059299005FF203 /* ME-Bike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ME-Bike.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8D9ACB2C059299005FF203 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B8D9ACD2C059299005FF203 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8B8D9ACF2C059299005FF203 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8B8D9ACF2C059299005FF203 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B8D9AD22C059299005FF203 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B8D9AD42C05929A005FF203 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B8D9AD72C05929A005FF203 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +31,7 @@
 		8B8D9AE02C059644005FF203 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		8B8D9AE22C059785005FF203 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		8B8D9AE42C05AE79005FF203 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		8BA1412C2C46176B0053D245 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bike.png; path = "../../../../../Desktop/ME-Bike画像集/bike.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +69,12 @@
 				8B8D9ACB2C059299005FF203 /* AppDelegate.swift */,
 				8B8D9ACD2C059299005FF203 /* SceneDelegate.swift */,
 				8B8D9ACF2C059299005FF203 /* ViewController.swift */,
+				8BA1412C2C46176B0053D245 /* bike.png */,
+				8B8D9AE22C059785005FF203 /* art.scnassets */,
 				8B8D9AD12C059299005FF203 /* Main.storyboard */,
 				8B8D9AD42C05929A005FF203 /* Assets.xcassets */,
 				8B8D9AD62C05929A005FF203 /* LaunchScreen.storyboard */,
 				8B8D9AD92C05929A005FF203 /* Info.plist */,
-				8B8D9AE22C059785005FF203 /* art.scnassets */,
 				8B8D9AE42C05AE79005FF203 /* Image.xcassets */,
 			);
 			path = "ME-Bike";
@@ -145,6 +148,7 @@
 			files = (
 				8B8D9AD82C05929A005FF203 /* LaunchScreen.storyboard in Resources */,
 				8B8D9AE32C059785005FF203 /* art.scnassets in Resources */,
+				8BA1412D2C46176B0053D245 /* bike.png in Resources */,
 				8B8D9AE52C05AE79005FF203 /* Image.xcassets in Resources */,
 				8B8D9AD52C05929A005FF203 /* Assets.xcassets in Resources */,
 				8B8D9AD32C059299005FF203 /* Main.storyboard in Resources */,
