@@ -14,10 +14,10 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,10 +30,10 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "webViewController"
-            landmarkType = "3">
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "loadWebPage()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "338D351E-C00A-4CB1-A7EB-9660E9CEECB7 - 19bd10906a43b0aa"
@@ -78,8 +78,8 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>

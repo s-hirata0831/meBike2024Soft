@@ -5,72 +5,19 @@ import WebKit
 import MapKit
 import SceneKit
 
-class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
-    @IBOutlet var sceneView: ARSCNView!
-   //ロード時に呼ばれる
-   override func viewDidLoad() {
-       super.viewDidLoad()
-       
-       //シーンの作成
-       sceneView.scene = SCNScene()
-       
-       //光源の有効化
-       sceneView.autoenablesDefaultLighting = true
-       
-       //ARSCNViewデリゲートの指定
-       sceneView.delegate = self
-   }
+class ViewController: UIViewController, WKNavigationDelegate{
+   @IBOutlet weak var webView: WKWebView!
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        webView.navigationDelegate = self
+        loadWebPage()
+    }
    
-   //ビュー表示時に呼ばれる
-   override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
-       
-       //ARImageTrackingConfigurationの生成
-       let configuration = ARImageTrackingConfiguration()
-       
-       //画像マーカーのリソースの指定
-       guard let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-           fatalError("Tracking images not found.")
+    func loadWebPage(){        if let url = URL(string: "https://s-hirata0831.github.io/meBike2024Soft/"){
+           let request = URLRequest(url: url)
+           webView.load(request)
        }
-       
-       configuration.trackingImages = trackingImages
-       configuration.maximumNumberOfTrackedImages = 1
-       
-       //セッションの開始
-       sceneView.session.run(configuration)
    }
-   
-   //ビュー非表示時に呼ばれる
-   override func viewWillDisappear(_ animated: Bool) {
-       super.viewWillDisappear(animated)
-       //セッションの一時停止
-       sceneView.session.pause()
-   }
-   
-   //ARアンカー追加時に呼ばれる
-   func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-       DispatchQueue.main.async {
-           // シーンの読み込み
-           guard let scene = SCNScene(named: "art.scnassets/ship.scn") else {
-               fatalError("Scene not found.")
-           }
-           print("Scene loaded successfully")
-
-           // モデルノードの取得
-           guard let modelNode = scene.rootNode.childNode(withName: "box", recursively: true) else {
-               fatalError("Model not found.")
-           }
-           print("Model node found: \(modelNode.name ?? "Unnamed")")
-
-           // モデルノードのスケール設定
-           modelNode.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
-           print("Model node scaled")
-
-           // ノードにモデルノードを追加
-           node.addChildNode(modelNode)
-           print("Model node added to scene")
-       }
-   }  
 }
 
 class webViewController: UIViewController, WKNavigationDelegate{
