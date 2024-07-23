@@ -14,8 +14,8 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -30,10 +30,42 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "webViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "338D351E-C00A-4CB1-A7EB-9660E9CEECB7 - 19bd10906a43b0aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ME_Bike.webViewController.loadWebPage() -&gt; ()"
+                  moduleName = "ME-Bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hiratasoma/Documents/meBike2024Soft/arApp/ME-Bike/ME-Bike/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  uuid = "338D351E-C00A-4CB1-A7EB-9660E9CEECB7 - 19bd10906a43b181"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ME_Bike.webViewController.loadWebPage() -&gt; ()"
+                  moduleName = "ME-Bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hiratasoma/Documents/meBike2024Soft/arApp/ME-Bike/ME-Bike/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "420">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +78,8 @@
             filePath = "ME-Bike/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
