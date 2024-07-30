@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,8 +32,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "loadWebPage()"
-            landmarkType = "7">
+            landmarkName = "webViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "338D351E-C00A-4CB1-A7EB-9660E9CEECB7 - 19bd10906a43b0aa"
