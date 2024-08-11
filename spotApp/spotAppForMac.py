@@ -4,8 +4,8 @@ import random as rnd
 import os
 import camera
 import time
-import firebase_admin
 import serial
+import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 
@@ -13,7 +13,7 @@ from firebase_admin import credentials
 #Firebase初期設定
 #------
 #Firebaseを初期化
-cred = credentials.Certificate('/Users/hiratasoma/Documents/meBike2024Soft/spotApp/meBike.json')
+cred = credentials.Certificate('meBike.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -68,6 +68,7 @@ def main(page: ft.Page):
     def route_change(e):
         #ページのクリア
         page.views.clear()
+        Solenoid = 18
         
         #トップページ
         page.views.append(
@@ -134,6 +135,9 @@ def main(page: ft.Page):
                 ],
             )
         )
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(Solenoid, GPIO.OUT)
+        GPIO.output(Solenoid, False)
 
         #トークン入力画面
         if page.route == "/01_token":
@@ -548,8 +552,7 @@ def main(page: ft.Page):
             )
 
         if page.route == "/08_unLockInfo":
-            ser = serial.Serial('/dev/tty.usbmodem1201', 9600)
-            ser.write(b'0')
+            GPIO.output(Solenoid, False)
             #自転車貸出中
             city_ref.update({"keyState": True})
             page.views.clear()
@@ -615,14 +618,13 @@ def main(page: ft.Page):
                     ]
                 )
             )
-            ser.write(b'1')
+            GPIO.output(Solenoid, True)
             print("ロックを解錠します")
             f = open('lockState.txt', 'w')
             f.write('1')
             f.close()
             time.sleep(0.2)
-            ser.write(b'0')
-            ser.close()
+            GPIO.output(Solenoid, False)
 
         if page.route == "/09_sleep":
             page.views.append(
@@ -687,6 +689,7 @@ def main(page: ft.Page):
                     ]
                 )
             )
+            GPIO.output(Solenoid, False)
 
         if page.route == "/10_back":
             page.views.append(
